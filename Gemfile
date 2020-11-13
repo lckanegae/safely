@@ -33,6 +33,9 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'devise'
 
+gem 'money-rails'
+gem 'cpf_utils'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'

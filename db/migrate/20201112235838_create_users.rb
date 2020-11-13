@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :address
       t.string :phone_number
       t.integer :age
-      t.integer :cpf
+      t.string :cpf
       t.integer :card_id
 
       t.timestamps

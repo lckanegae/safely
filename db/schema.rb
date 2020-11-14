@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_11_13_001234) do
     t.string "last_name"
     t.string "adress"
     t.string "phone_number"
-    t.integer "age"
+    t.date "birth_date"
     t.string "cpf"
     t.integer "card_id"
     t.index ["email"], name: "index_users_on_email", unique: true

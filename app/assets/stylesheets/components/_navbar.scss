@@ -75,7 +75,7 @@ nav {
     margin-bottom: 2px !important;
     padding: 3px !important;
     width: 30px !important;
-    color: rgb(0,0,0) !important;
+    color: rgb(176, 176, 176) !important;
 }
 
 .nav-icon-text {
@@ -89,4 +89,18 @@ nav {
     -webkit-box-orient: vertical !important;
     font-weight: 600 !important;
     overflow-wrap: break-word !important;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}
+
+svg:not(:root) {
+    overflow: hidden;
 }

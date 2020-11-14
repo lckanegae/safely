@@ -1,0 +1,2 @@
+class SecuredItemsController < ApplicationController
+end

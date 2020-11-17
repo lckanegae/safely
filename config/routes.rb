@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :item_designs, only: [:show, :index]
   resources :secured_items, only: [:new, :create, :edit, :update]
+  get 'search', to: 'item_designs#index', as: :search
 end

@@ -1,5 +1,5 @@
 class ItemDesign < ApplicationRecord
-  include PgSearch
+  include PgSearch::Model
   
   has_many :secured_items
 

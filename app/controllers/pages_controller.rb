@@ -1,13 +1,5 @@
 class PagesController < ApplicationController
   def home
-
-  end
-
-  def profile
-    @user = current_user
-    @secured_items = Secured_item.where(user: current_user)
-  end
-
-  def edit
+    @top_five_items = SecuredItem.group(:item_design).order(count: :desc).limit(5).count
   end
 end

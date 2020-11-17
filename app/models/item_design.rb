@@ -3,7 +3,7 @@ class ItemDesign < ApplicationRecord
   
   has_many :secured_items
 
-  monetize :refund_price_cents
+  monetize :refund_cents
 
   scope :sorted, ->{ order(name: :asc) }
 
@@ -11,4 +11,5 @@ class ItemDesign < ApplicationRecord
     using: {
       tsearch: {prefix: true}
     }
+
 end

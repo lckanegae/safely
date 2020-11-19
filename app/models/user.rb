@@ -11,5 +11,6 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true
   validates :birth_date, presence: true
-  validates :cpf, presence: true
+  validates :cpf, presence: true, uniqueness: true
+  validates :nickname, presence: true, uniqueness: true
 end

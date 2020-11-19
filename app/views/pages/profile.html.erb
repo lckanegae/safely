@@ -1,7 +1,8 @@
-<h1>Welcome <%= current_user.first_name %> <%= current_user.last_name %></h1>
+<h2>Welcome <%= current_user.first_name %> <%= current_user.last_name %></h2>
 
 <% unless @user_items.nil? %>
   <% @user_items.each do |user_item| %>
-    <h1><%= user_item.item_design.name %></h1>
+    <h4><%= user_item.item_design.name %></h4>
+    <h4><%= user_item.subscription %></h4>
   <% end %>
 <% end %>

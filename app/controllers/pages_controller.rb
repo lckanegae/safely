@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :home
+
   def home
     @top_five_items = SecuredItem.group(:item_design).order(count: :desc).limit(5).count
   end

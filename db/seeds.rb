@@ -36,7 +36,9 @@ end
     address: "Av. Paulista, 123",
     phone_number: "(+5511)123123123",
     birth_date: Date.new(2001,11,11),
-    cpf: "423.423.423-10"
+    cpf: "423.423.423-#{rand(10-99)}",
+    nickname: username
+
     )
   puts "Creating user #{@user.first_name} #{@user.last_name}"
 end

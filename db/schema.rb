@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_19_202311) do
+ActiveRecord::Schema.define(version: 2020_11_20_151813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2020_11_19_202311) do
     t.string "subscription_type"
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "USD", null: false
-    t.integer "days"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_design_id"], name: "index_subscriptions_on_item_design_id"

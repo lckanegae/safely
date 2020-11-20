@@ -20,7 +20,6 @@ Money.locale_backend = nil
   Subscription.create!(
     item_design: @item_design,
     subscription_type: "daily",
-    days: rand(10..30),
     price: Money.new(rand(100..200), "USD").format
     )
 

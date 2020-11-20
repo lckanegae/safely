@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_20_151813) do
+ActiveRecord::Schema.define(version: 2020_11_20_154515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2020_11_20_151813) do
     t.date "expiration_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "total_price_cents", default: 0, null: false
+    t.string "total_price_currency", default: "USD", null: false
     t.index ["item_design_id"], name: "index_secured_items_on_item_design_id"
     t.index ["subscription_id"], name: "index_secured_items_on_subscription_id"
     t.index ["user_id"], name: "index_secured_items_on_user_id"

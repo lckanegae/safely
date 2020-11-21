@@ -1,2 +1,8 @@
-<h1>ItemDesigns#show</h1>
-<p>Find me in app/views/item_designs/show.html.erb</p>
+<h1><%= @item_design.name %></h1>
+<% @subscriptions.each do |subscription| %>
+  <div>
+    <h3><%= subscription.subscription_type %></h3>
+    <h3><%= subscription.price.format %></h3>
+    <br>
+  </div>
+<% end %>

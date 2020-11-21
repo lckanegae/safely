@@ -15,13 +15,14 @@
 
   puts "Creating Item Design #{@item_design.name}"
 
-  Subscription.create!(
-    item_design: @item_design,
-    subscription_type: "daily",
-    price: Money.new(rand(100..200), "USD")
-    )
-
-  puts "Creating Subscription for #{@item_design.name}"
+  ["Damage", "Loss", "Theft"].each do |type|
+    Subscription.create!(
+      item_design: @item_design,
+      subscription_type: type,
+      price: Money.new(rand(100..200), "USD")
+      )
+    puts "Creating Insurance for #{type} to #{@item_design.name}"
+  end
 end
 
 ["Leticia", "Gilbas", "Tatchi", "Leon", "Carol", "Thierry", "Ana", "Roberto", "JoA"].each do |username|
@@ -35,19 +36,25 @@ end
     birth_date: Date.new(2001,11,11),
     cpf: "423.423.4#{rand(10-99)}-#{rand(10-99)}",
     nickname: username
-
     )
+
   puts "Creating user #{@user.first_name} #{@user.last_name}"
 
   4.times do
     @item_design = ItemDesign.all.sample()
-    @subscription = Subscription.find_by item_design: @item_design
 
-    SecuredItem.create!(
+    secured_item = SecuredItem.create!(
       user: @user,
-      item_design: @item_design,
-      subscription: @subscription
+      item_design: @item_design
       )
-    puts "Creating secured item #{@item_design.name} for #{@user.first_name} #{@user.last_name}"
+
+    Subscription.where(item_design: @item_design).each do |subscription|
+    SecuredSubscription.create!(
+      secured_item: secured_item,
+      subscription: subscription
+      )
+    end
+
+    puts "Creating secured item #{@item_design.name} with subscriptions for #{@user.first_name} #{@user.last_name}"
   end
 end

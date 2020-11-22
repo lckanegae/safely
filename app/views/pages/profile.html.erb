@@ -18,18 +18,33 @@
   <div class="container mt-6">
     <h2 class="subtitle">Currently Insured</h2>
     <% unless @user_items.nil? %>
-      <% @user_items.each do |user_item| %>
-        <div>
-          <h4><%= user_item.item_design.name %></h4>
-          <% if user_item.activation_date.nil? %>
-            <%= button_to "Activate", secured_item_path(user_item),
-              method: :patch, data: { confirm: "Please confirm the insurance activation." } %>
-          <% else %>
-            <%= button_to "Deactivate", secured_item_path(user_item),
-              method: :patch, data: { confirm: "Please confirm the insurance deactivation." } %>
-          <% end %>
-        </div>
-      <% end %>
+      <div>
+        <% @user_items.each do |user_item| %>
+          <div class="card px-2 py-2 my-5 is-flex">
+            <div class="card-image">
+              <figure class="image is-96x96">
+                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="card-content-title">
+                <h2 class="has-text-weight-bold">
+                  <%= user_item.item_design.name %>
+                </h2>
+              </div>
+              <div class="card-content-options">
+                <% if user_item.activation_date.nil? %>
+                  <%= button_to "Activate", secured_item_path(user_item),
+                    method: :patch, data: { confirm: "Please confirm the insurance activation." } %>
+                <% else %>
+                  <%= button_to "Deactivate", secured_item_path(user_item),
+                    method: :patch, data: { confirm: "Please confirm the insurance deactivation." } %>
+                <% end %>
+            </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     <% else %>
       <h1>You still don't have any insurance options</h1>
       <%= link_to "Add Some", item_designs_path %>
@@ -40,8 +55,21 @@
     <h2 class="subtitle">Insure again</h2>
     <% unless @expired_items.nil? %>
       <% @expired_items.each do |expired_item| %>
-        <%= button_to "#{expired_item.item_design.name}", item_design_path(expired_item.item_design),
-          method: :get, class: "" %>
+        <div class="card px-2 py-2 my-5 is-flex">
+          <div class="card-image">
+            <figure class="image is-96x96">
+              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="card-content-title">
+              <h2 class="has-text-weight-bold">
+                <%= expired_item.item_design.name %>
+              </h2>
+            </div>
+            <%= button_to "#{expired_item.item_design.name}", item_design_path(expired_item.item_design), method: :get, class: "" %>
+          </div>
+        </div>
       <% end %>
     <% end %>
   </div>

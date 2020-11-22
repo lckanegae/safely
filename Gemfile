@@ -33,7 +33,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'devise'
-gem 'bulma-rails', '~> 0.9'
+gem 'bulma-rails', '~> 0.9.0'
 
 gem 'money-rails'
 gem 'cpf_utils'

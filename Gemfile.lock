@@ -249,7 +249,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootsnap (>= 1.4.2)
-  bulma-rails (~> 0.9)
+  bulma-rails (~> 0.9.0)
   byebug
   capybara (>= 2.15)
   cpf_utils

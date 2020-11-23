@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :chatrooms, only: :show do
     resources :messages, only: :create
   end
-  resources :item_designs, only: [:show, :index]
+  resources :item_designs, only: [:show]
   resources :secured_items, only: [:new, :create, :update]
   get 'search', to: 'item_designs#index', as: :search
   get 'profile', to: 'pages#profile'

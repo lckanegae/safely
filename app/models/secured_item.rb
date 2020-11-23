@@ -2,6 +2,7 @@ class SecuredItem < ApplicationRecord
   belongs_to :user
   belongs_to :item_design
   has_many :secured_subscriptions
+  has_many :subscriptions, through: :secured_subscriptions
   before_update :calculate_price
 
   private

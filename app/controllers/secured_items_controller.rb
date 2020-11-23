@@ -1,11 +1,14 @@
 class SecuredItemsController < ApplicationController
   def create
-    @secured_item = SecuredItem.new(secured_item_params)
+    @secured_item = SecuredItem.new(item_design_id: secured_item_params[:item_design_id])
     @secured_item.user = current_user
+    secured_item_params[:subscriptions].each do |subscription_id|
+      SecuredSubscription.create!(subscription_id: subscription_id, secured_item: @secured_item)
+    end
     if @secured_item.save
       redirect_to profile_path, notice: "Insurance option created!"
     else
-      render :new
+      redirect_to item_design_path(@secured_item.item_design)
     end
   end
 
@@ -24,6 +27,6 @@ class SecuredItemsController < ApplicationController
   end
 
   def secured_item_params
-    params.require(:secured_item).permit(:id, :user_id, :item_design_id, :subscription_id)
+    params.require(:secured_item).permit(:id, :item_design_id, subscriptions: [])
   end
 end

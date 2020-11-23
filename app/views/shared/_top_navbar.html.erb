@@ -9,39 +9,43 @@
 
   <div class="navbar-menu" id="navbarMenu" >
     <div class="navbar-start">
+      <a class="navbar-item">
+        Home
+      </a>
 
+      <a class="navbar-item">
+        Search
+      </a>
     </div>
     <div class="navbar-end">
-
-  <div class="" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "My Profile", root_path, class: "nav-link nav-font" %></li>
-        <li class="nav-item">
-           <% if current_user.photo.attached?  %>
-            <%= cl_image_tag current_user.photo.key, height: 50, width: 50, crop: :fill, class: "avatar avatar-bordered dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <div class="" id="navbarSupportedContent">
+        <ul class="is-flex">
+          <% if user_signed_in? %>
+            <li class="navbar-item">
+              <%= link_to "My items", item_designs_path, class: "navbar-item" %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "navbar-item" %>
+              <%= link_to "My Profile", root_path, class: "navbar-item" %></li>
+            <li class="nav-item">
+              <% if current_user.photo.attached?  %>
+                <%= cl_image_tag current_user.photo.key, height: 50, width: 50, crop: :fill, class: "avatar avatar-bordered dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% else %>
+                <%= image_tag "avatar.png", class: "avatar avatar-bordered dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% end %>
+            </li>
           <% else %>
-            <%= image_tag "avatar.png", class: "avatar avatar-bordered dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <li class="nav-item">
+              <div class="buttons">
+                <a>
+                  <%= link_to "Log in", new_user_session_path, class: "button is-primary" %>
+                </a>
+                <a>
+                  <%= link_to "Sign up", new_user_registration_path, class: "button is-light" %>
+                </a>
+              </div>
+            </li>
           <% end %>
-          <div class="" aria-labelledby="navbarDropdown">
-            <%= link_to "My items", item_designs_path, class: "" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Contact Us", root_path, class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

@@ -27,6 +27,9 @@
                 required: true %>
     <%= f.input :birth_date,
                 as: :date,
+                start_year: Date.today.year - 90,
+                end_year: Date.today.year - 17,
+                discard_day: true,
                 required: true %>
     <%= f.input :photo, as: :file %>
   </div>

@@ -19,6 +19,8 @@
                 required: true %>
     <%= f.input :last_name,
                 required: true %>
+    <%= f.input :nickname,
+                required: true %>
     <%= f.input :phone_number,
                 required: true %>
     <%= f.input :cpf,
@@ -26,6 +28,7 @@
     <%= f.input :birth_date,
                 as: :date,
                 required: true %>
+    <%= f.input :photo, as: :file %>
   </div>
 
   <div class="form-actions">

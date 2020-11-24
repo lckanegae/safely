@@ -6,25 +6,23 @@
 #   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create!(name: 'Luke', movie: movies.first)
 
-Money.locale_backend = nil
-
 ["Samsung S9", "Samsung S10", "Iphone 7", "Iphone 8", "Iphone 11", "Nexus 2", "Windows Phone"].each do |design|
   @item_design = ItemDesign.create!(
     name: design,
-    refund: Money.new(rand(100..200), "USD").format,
+    refund: Money.new(rand(100..200), "USD"),
     item_type: "Phone"
     )
 
   puts "Creating Item Design #{@item_design.name}"
 
-  Subscription.create!(
-    item_design: @item_design,
-    subscription_type: "daily",
-    days: rand(10..30),
-    price: Money.new(rand(100..200), "USD").format
-    )
-
-  puts "Creating Subscription for #{@item_design.name}"
+  ["Damage", "Loss", "Theft"].each do |type|
+    Subscription.create!(
+      item_design: @item_design,
+      subscription_type: type,
+      price: Money.new(rand(100..200), "USD")
+      )
+    puts "Creating Insurance for #{type} to #{@item_design.name}"
+  end
 end
 
 ["Leticia", "Gilbas", "Tatchi", "Leon", "Carol", "Thierry", "Ana", "Roberto", "JoA"].each do |username|
@@ -36,21 +34,27 @@ end
     address: "Av. Paulista, 123",
     phone_number: "(+5511)123123123",
     birth_date: Date.new(2001,11,11),
-    cpf: "423.423.423-10"
+    cpf: "423.423.4#{rand(10-99)}-#{rand(10-99)}",
+    nickname: username
     )
+
   puts "Creating user #{@user.first_name} #{@user.last_name}"
-end
 
-40.times do
+  4.times do
+    @item_design = ItemDesign.all.sample()
 
-  @item_design = ItemDesign.all.sample()
-  @user = User.all.sample()
-  @subscription = Subscription.find_by item_design: @item_design
+    secured_item = SecuredItem.create!(
+      user: @user,
+      item_design: @item_design
+      )
 
-  SecuredItem.create!(
-    user: @user,
-    item_design: @item_design,
-    subscription: @subscription
-    )
-  puts "Creating secured item #{@item_design.name} for #{@user.first_name} #{@user.last_name}"
+    Subscription.where(item_design: @item_design).each do |subscription|
+    SecuredSubscription.create!(
+      secured_item: secured_item,
+      subscription: subscription
+      )
+    end
+
+    puts "Creating secured item #{@item_design.name} with subscriptions for #{@user.first_name} #{@user.last_name}"
+  end
 end

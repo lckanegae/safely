@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_19_202311) do
+ActiveRecord::Schema.define(version: 2020_11_21_185211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
@@ -43,14 +64,23 @@ ActiveRecord::Schema.define(version: 2020_11_19_202311) do
   create_table "secured_items", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_design_id", null: false
-    t.bigint "subscription_id", null: false
     t.date "activation_date"
     t.date "expiration_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "total_price_cents", default: 0, null: false
+    t.string "total_price_currency", default: "USD", null: false
     t.index ["item_design_id"], name: "index_secured_items_on_item_design_id"
-    t.index ["subscription_id"], name: "index_secured_items_on_subscription_id"
     t.index ["user_id"], name: "index_secured_items_on_user_id"
+  end
+
+  create_table "secured_subscriptions", force: :cascade do |t|
+    t.bigint "subscription_id", null: false
+    t.bigint "secured_item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["secured_item_id"], name: "index_secured_subscriptions_on_secured_item_id"
+    t.index ["subscription_id"], name: "index_secured_subscriptions_on_subscription_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -58,7 +88,6 @@ ActiveRecord::Schema.define(version: 2020_11_19_202311) do
     t.string "subscription_type"
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "USD", null: false
-    t.integer "days"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_design_id"], name: "index_subscriptions_on_item_design_id"
@@ -84,10 +113,12 @@ ActiveRecord::Schema.define(version: 2020_11_19_202311) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "secured_items", "item_designs"
-  add_foreign_key "secured_items", "subscriptions"
   add_foreign_key "secured_items", "users"
+  add_foreign_key "secured_subscriptions", "secured_items"
+  add_foreign_key "secured_subscriptions", "subscriptions"
   add_foreign_key "subscriptions", "item_designs"
 end

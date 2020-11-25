@@ -1,27 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or create!d alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create!(name: 'Luke', movie: movies.first)
+$design_path = Rails.root.join('app','assets','images','item_designs')
+Dir.children($design_path).each do |design_filename|
+  design_path = $design_path + design_filename
+  design = File.basename(design_path, File.extname(design_path))
 
-["Samsung S9", "Samsung S10", "Iphone 7", "Iphone 8", "Iphone 11", "Nexus 2", "Windows Phone"].each do |design|
-  @item_design = ItemDesign.create!(
+  @item_design = ItemDesign.new(
     name: design,
     refund: Money.new(rand(100..200), "USD"),
-    item_type: "Phone"
+    item_type: "Mobile"
     )
+  @item_design.design.attach(io: File.open(design_path), filename: design)
+  @item_design.save!
 
-  puts "Creating Item Design #{@item_design.name}"
+  puts "Creating Item #{@item_design.name}"
 
   ["Damage", "Loss", "Theft"].each do |type|
     Subscription.create!(
-      item_design: @item_design,
+      item_design: ItemDesign.find_by(name: design),
       subscription_type: type,
       price: Money.new(rand(100..200), "USD")
       )
-    puts "Creating Insurance for #{type} to #{@item_design.name}"
+    puts "Creating #{type} Insurance for #{@item_design.name}"
   end
 end
 

@@ -1,4 +1,4 @@
-<div class="d-block d-sm-none">
+<div class="d-block is-hidden-tablet">
   <div>
     <nav class="nav-bar-container" aria-hidden="false">
       <div class="nav-bar-content">
@@ -31,7 +31,8 @@
           </div>
           <div class="nav-icon-text">Search</div>
         </a>
-        <%= link_to(chatroom_path(set_support_chat), class: "nav-icon-container") do %>
+
+        <%= link_to(chatroom_path(2), class: "nav-icon-container") do %>
           <div class="nav-icon-content">
             <svg viewBox="0 0 32 32"
               xmlns="http://www.w3.org/2000/svg"

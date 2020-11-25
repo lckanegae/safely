@@ -1,7 +1,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <h1>Search an item</h1>
-      <%= form_tag(search_path, method: "get") do %>
+      <%= form_tag(item_designs_path, method: "get") do %>
         <%= select_tag "search", options_from_collection_for_select(ItemDesign.all, :name, :name), class: 'select2'%>
         <%= submit_tag("Search") %>
       <% end %>

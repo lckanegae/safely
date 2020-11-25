@@ -1,2 +1,10 @@
-<h1>ItemDesigns#show</h1>
-<p>Find me in app/views/item_designs/show.html.erb</p>
+<h1><%= @item_design.name %></h1>
+
+<%= simple_form_for @secured_item do |f| %>
+  <%= f.input_field :subscriptions, as: :check_boxes, :collection => @subscriptions,
+   :label_method => lambda { |subscription| "<h3>#{subscription.subscription_type}</h3><h3>#{subscription.price.format}</h3><br>".html_safe },
+   label: false,
+   include_hidden: false %>
+  <%= f.hidden_field :item_design_id, value: @item_design.id %>
+  <%= f.button :submit %>
+<% end %>

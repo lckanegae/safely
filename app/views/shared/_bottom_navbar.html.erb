@@ -31,8 +31,7 @@
           </div>
           <div class="nav-icon-text">Search</div>
         </a>
-
-        <a class="nav-icon-container" href="/support">
+        <%= link_to(chatroom_path(set_support_chat), class: "nav-icon-container") do %>
           <div class="nav-icon-content">
             <svg viewBox="0 0 32 32"
               xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +43,7 @@
             </svg>
           </div>
           <div class="nav-icon-text">Support</div>
-        </a>
+        <% end %>
 
         <a class="nav-icon-container" href="/profile">
           <div class="nav-icon-content">

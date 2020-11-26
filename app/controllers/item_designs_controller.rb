@@ -1,7 +1,9 @@
 class ItemDesignsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
+
   def show
     @item_design = ItemDesign.find(params[:id])
-    @secured_item = SecuredItem.new()
+    @secured_item = SecuredItem.new
     @secured_item.item_design = @item_design
     @subscriptions = Subscription.where(item_design: @item_design)
   end

@@ -52,8 +52,8 @@
   </div>
 
   <div class="container mt-6">
-    <h2 class="subtitle">Insure again</h2>
     <% unless @expired_items.nil? %>
+      <h2 class="subtitle">Insure again</h2>
       <% @expired_items.each do |expired_item| %>
         <div class="card px-2 pt-2 my-5 is-flex">
           <div class="card-image">

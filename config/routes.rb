@@ -3,7 +3,7 @@ Rails.application.routes.draw do
         sessions: 'users/sessions'
       }
   root to: 'pages#home'
-  resources :chatrooms, only: :show do
+  resources :chatrooms, only: [:index, :show, :create] do
     resources :messages, only: :create
   end
   resources :item_designs, only: [:show, :index]

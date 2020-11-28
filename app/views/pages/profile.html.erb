@@ -33,14 +33,22 @@
                 </h2>
               </div>
               <div class="card-content-options">
-                <% if user_item.activation_date.nil? %>
-                  <%= button_to "Activate", activate_path(user_item),
-                    method: :patch, data: { confirm: "Please confirm the insurance activation." } %>
-                <% else %>
-                  <%= button_to "Deactivate", deactivate_path(user_item),
-                    method: :patch, data: { confirm: "Please confirm the insurance deactivation." } %>
-                <% end %>
-                <%=  button_to "Edit", edit_secured_item_path(user_item) %>
+                <div class="is-flex is-justify-content-space-between">
+                  <% if user_item.activation_date.nil? %>
+                    <div class="">
+                      <%= button_to "Activate", activate_path(user_item),
+                       method: :patch, data: { confirm: "Please confirm the insurance activation." }, class: "button is-dark is-small" %>
+                    </div>
+                  <% else %>
+                    <div class="">
+                      <%= button_to "Deactivate", deactivate_path(user_item),
+                       method: :patch, data: { confirm: "Please confirm the insurance deactivation." }, class: "button is-dark is-small" %>
+                    </div>
+                  <% end %>
+                  <div class="ml-3">
+                    <%=  button_to "Edit", edit_secured_item_path(user_item), class: "button is-dark is-small" %>
+                  </div>
+                </div>
             </div>
             </div>
           </div>

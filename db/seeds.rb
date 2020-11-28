@@ -23,6 +23,46 @@ Dir.children($design_path).each do |design_filename|
   end
 end
 
+["Asus Zenbook 14", "MacBook Air", "Acer Aspire I5", "MacBook Pro", "Vaio FE14"].each do |design_filename|
+  @item_design = ItemDesign.new(
+    name: design_filename,
+    refund: Money.new(rand(100..200), "USD"),
+    item_type: "Mobile"
+    )
+  @item_design.save!
+
+  puts "Creating Item #{@item_design.name}"
+
+  ["Damage", "Loss", "Theft"].each do |type|
+    Subscription.create!(
+      item_design: ItemDesign.find_by(name: design_filename),
+      subscription_type: type,
+      price: Money.new(rand(100..200), "USD")
+      )
+    puts "Creating #{type} Insurance for #{@item_design.name}"
+  end
+end
+
+["HRV", "Fox Sport", "Honda Fit", "HB20", "Golf", "HB20 Sedan", "Captiva", "Hilux"].each do |design_filename|
+  @item_design = ItemDesign.new(
+    name: design_filename,
+    refund: Money.new(rand(100..200), "USD"),
+    item_type: "Mobile"
+    )
+  @item_design.save!
+
+  puts "Creating Item #{@item_design.name}"
+
+  ["Damage", "Loss", "Theft"].each do |type|
+    Subscription.create!(
+      item_design: ItemDesign.find_by(name: design_filename),
+      subscription_type: type,
+      price: Money.new(rand(100..200), "USD")
+      )
+    puts "Creating #{type} Insurance for #{@item_design.name}"
+  end
+end
+
 ["Leticia", "Gilbas", "Tatchi", "Leon", "Carol", "Thierry", "Ana", "Roberto", "JoA"].each do |username|
   @user = User.create!(
     email: "#{username.downcase}@lewagon.com",

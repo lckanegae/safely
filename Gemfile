@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'pg_search', '~> 2.3.0'
 gem 'cloudinary', '~> 1.16.0'
 
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

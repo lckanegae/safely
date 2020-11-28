@@ -14,7 +14,15 @@ class SecuredItemsController < ApplicationController
     end
   end
 
+  def edit
+    @secured_item = SecuredItem.find(params[:id])    
+  end
+
   def update
+    redirect_to profile_path
+  end
+
+  def activate
     @secured_item = SecuredItem.find(params[:id])
     return unless @secured_item.user.id == current_user.id
 
@@ -28,7 +36,11 @@ class SecuredItemsController < ApplicationController
     @secured_item.save
   end
 
+  def deactivate
+    
+  end
+
   def secured_item_params
-    params.require(:secured_item).permit(:id, :item_design_id, subscriptions: [])
+    params.require(:secured_item).permit(:activation_date, :expiration_date, :id, :item_design_id, subscriptions: [])
   end
 end

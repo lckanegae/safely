@@ -34,15 +34,16 @@
               </div>
               <div class="card-content-options">
                 <% if user_item.activation_date.nil? %>
-                  <%= button_to "Activate", secured_item_path(user_item),
+                  <%= button_to "Activate", activate_path(user_item),
                     method: :patch, data: { confirm: "Please confirm the insurance activation." } %>
                 <% else %>
-                  <%= button_to "Deactivate", secured_item_path(user_item),
+                  <%= button_to "Deactivate", deactivate_path(user_item),
                     method: :patch, data: { confirm: "Please confirm the insurance deactivation." } %>
                 <% end %>
             </div>
             </div>
           </div>
+          <%= link_to "Edit", edit_secured_item_path(user_item) %>
         <% end %>
       </div>
     <% else %>

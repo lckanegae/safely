@@ -30,7 +30,8 @@ gem 'cloudinary', '~> 1.16.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'autoprefixer-rails'
+#gem 'autoprefixer-rails'
+gem 'autoprefixer-rails', '~> 7.1', '>= 7.1.6'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'devise'

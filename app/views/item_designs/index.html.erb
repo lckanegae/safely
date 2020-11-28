@@ -1,4 +1,37 @@
-<h1>Items</h1>
-<p><% @items.each do |item| %></p>
-<p><%= link_to "#{item.name}", item_design_path(item) %> <%= " - #{item.refund_currency} #{item.refund_cents}" %></p>
-<% end %>
+<section class="section pb-5">
+
+  <div class="">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h1>Search an item</h1>
+        <%= form_tag(item_designs_path, method: "get") do %>
+        <%= select_tag "search", options_from_collection_for_select(ItemDesign.all, :name, :name), class: 'select2'%>
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>
+  </div>
+
+</section>
+
+<section class="section pt-5">
+  <div class="container">
+    <h2 class="subtitle px-2">Items</h2>
+    <p><% @items.each do |item| %></p>
+      <div class="card px-2 pt-2 my-5 is-flex">
+        <div class="card-image">
+          <figure class="image is-96x96">
+            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="card-content-title pb-2">
+            <h2 class="has-text-weight-bold">
+              <p><%= link_to "#{item.name}", item_design_path(item) %></p>
+              <p><%= "#{item.refund_currency} #{item.refund_cents}" %></p>
+            </h2>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
+

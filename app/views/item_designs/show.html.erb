@@ -1,10 +1,36 @@
-<h1><%= @item_design.name %></h1>
+<section class="section">
+  <div class="card px-2 py-2 mt-5">
+    <div class="card-header is-shadowless">
+      <h3 class="card-header-title is-centered"><%= @item_design.name %></h3>
+    </div>
+    <div class="card-image">
+      <figure class="image is-1by1">
+        <img src="https://bulma.io/images/placeholders/256x256.png" alt="Placeholder image">
+      </figure>
+    </div>
+  </div>
 
-<%= simple_form_for @secured_item do |f| %>
-  <%= f.input_field :subscriptions, as: :check_boxes, :collection => @subscriptions,
-   :label_method => lambda { |subscription| "<h3>#{subscription.subscription_type}</h3><h3>#{subscription.price.format}</h3><br>".html_safe },
-   label: false,
-   include_hidden: false %>
-  <%= f.hidden_field :item_design_id, value: @item_design.id %>
-  <%= f.button :submit %>
-<% end %>
+  <div class="">
+    <%= simple_form_for @secured_item do |f| %>
+      <div class="card px-2 py-2 mb-5">
+        <%= f.input_field :subscriptions, as: :check_boxes, :collection => @subscriptions,
+         :label_method => lambda { |subscription|
+            "<div>
+              <h3>#{subscription.subscription_type}</h3>
+              <h3>#{subscription.price.format}</h3><br>
+            </div>".html_safe
+          },
+         label: false,
+         include_hidden: false %>
+      </div>
+      <%= f.hidden_field :item_design_id, value: @item_design.id %>
+      <div class="">
+        <%= f.button :submit, "Buy", class: "button is-dark" %>
+      </div>
+    <% end %>
+  </div>
+
+</section>
+
+
+

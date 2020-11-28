@@ -2,9 +2,11 @@
   <div class="hero-body">
     <div class="container">
       <% if current_user %>
-        <h1 class="title">
-          Welcome <%= current_user.first_name %> <%= current_user.last_name %>
-        </h1>
+        <div class="">
+          <h3 class="">
+            Welcome <%= current_user.first_name %> <%= current_user.last_name %>!
+          </h3>
+        </div>
       <% end %>
     </div>
   </div>
@@ -33,15 +35,23 @@
                 </h2>
               </div>
               <div class="card-content-options">
-                <% if user_item.activation_date.nil? %>
-                  <%= button_to "Activate", activate_path(user_item),
-                    method: :patch, data: { confirm: "Please confirm the insurance activation." } %>
-                <% else %>
-                  <%= button_to "Deactivate", deactivate_path(user_item),
-                    method: :patch, data: { confirm: "Please confirm the insurance deactivation." } %>
-                <% end %>
-                <%=  link_to "Edit", edit_secured_item_path(user_item), method: "get" %>
-            </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <% if user_item.activation_date.nil? %>
+                    <div class="">
+                      <%= button_to "Activate", activate_path(user_item),
+                       method: :patch, data: { confirm: "Please confirm the insurance activation." }, class: "button is-dark is-small" %>
+                    </div>
+                  <% else %>
+                    <div class="">
+                      <%= button_to "Deactivate", deactivate_path(user_item),
+                       method: :patch, data: { confirm: "Please confirm the insurance deactivation." }, class: "button is-dark is-small" %>
+                    </div>
+                  <% end %>
+                  <div class="ml-3">
+                    <%=  link_to "Edit", edit_secured_item_path(user_item), method: "get", class: "button is-dark is-small" %>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         <% end %>

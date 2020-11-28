@@ -1,7 +1,26 @@
-<%= @secured_item.item_design.name %>
+<section class="section">
+  <div class="card px-2 py-2 mt-5">
+    <div class="card-header is-shadowless">
+      <h3 class="card-header-title is-centered"><%= @secured_item.item_design.name %></h3>
+    </div>
+    <div class="card-image">
+      <figure class="image is-1by1">
+        <img src="https://bulma.io/images/placeholders/256x256.png" alt="Placeholder image">
+      </figure>
+    </div>
+  </div>
 
-<%= simple_form_for @secured_item do |f| %>
-  <%= f.input :activation_date, as: :date %>
-  <%= f.input :expiration_date, as: :date %>  
-  <%= f.button :submit %>
-<% end %>
+  <div>
+    <%= simple_form_for @secured_item do |f| %>
+      <div class="card px-2 py-2 mb-5">
+        <div class="px-2 py-2">
+          <%= f.input :activation_date, as: :date %>
+        </div>
+        <div class="px-2 py-2">
+          <%= f.input :expiration_date, as: :date %>
+        </div>
+        <%= f.button :submit, "Update your insurance", class: "button is-dark mt-5" %>
+      </div>
+    <% end %>
+  </div>
+</section>

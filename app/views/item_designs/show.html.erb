@@ -15,9 +15,11 @@
       <div class="card px-2 py-2 mb-5">
         <%= f.input_field :subscriptions, as: :check_boxes, :collection => @subscriptions,
          :label_method => lambda { |subscription|
-            "<h3>#{subscription.subscription_type}</h3>
-            <h3>#{subscription.price.format}</h3><br>".html_safe
-          }, class: "",
+            "<div>
+              <h3>#{subscription.subscription_type}</h3>
+              <h3>#{subscription.price.format}</h3><br>
+            </div>".html_safe
+          },
          label: false,
          include_hidden: false %>
       </div>

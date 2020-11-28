@@ -2,9 +2,11 @@
   <div class="hero-body">
     <div class="container">
       <% if current_user %>
-        <h1 class="title">
-          Welcome <%= current_user.first_name %> <%= current_user.last_name %>
-        </h1>
+        <div class="">
+          <h3 class="">
+            Welcome <%= current_user.first_name %> <%= current_user.last_name %>!
+          </h3>
+        </div>
       <% end %>
     </div>
   </div>

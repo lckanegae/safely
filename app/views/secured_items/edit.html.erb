@@ -1,0 +1,7 @@
+<%= @secured_item.item_design.name %>
+
+<%= simple_form_for @secured_item do |f| %>
+  <%= f.input :activation_date, as: :date %>
+  <%= f.input :expiration_date, as: :date %>  
+  <%= f.button :submit %>
+<% end %>

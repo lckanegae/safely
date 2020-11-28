@@ -14,7 +14,31 @@ class SecuredItemsController < ApplicationController
     end
   end
 
+  def edit
+    @secured_item = SecuredItem.find(params[:id])    
+  end
+
   def update
+    @secured_item = SecuredItem.find(params[:id])
+    @secured_item.update(secured_item_params)
+    redirect_to profile_path
+  end
+
+  def activate
+    @secured_item = SecuredItem.find(params[:id])
+    return unless @secured_item.user.id == current_user.id
+
+    if @secured_item.activation_date.nil?
+      @secured_item.activation_date = DateTime.now
+    elsif DateTime.now.month == @secured_item.activation_date.month && DateTime.now.day == @secured_item.activation_date.day
+      @secured_item.expiration_date = DateTime.now + 1.day
+    else
+      @secured_item.expiration_date = DateTime.now
+    end
+    @secured_item.save
+  end
+
+  def deactivate
     @secured_item = SecuredItem.find(params[:id])
     return unless @secured_item.user.id == current_user.id
 
@@ -29,6 +53,6 @@ class SecuredItemsController < ApplicationController
   end
 
   def secured_item_params
-    params.require(:secured_item).permit(:id, :item_design_id, subscriptions: [])
+    params.require(:secured_item).permit(:activation_date, :expiration_date, :id, :item_design_id, subscriptions: [])
   end
 end

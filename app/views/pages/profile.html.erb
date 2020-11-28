@@ -40,10 +40,10 @@
                   <%= button_to "Deactivate", deactivate_path(user_item),
                     method: :patch, data: { confirm: "Please confirm the insurance deactivation." } %>
                 <% end %>
+                <%=  button_to "Edit", edit_secured_item_path(user_item) %>
             </div>
             </div>
           </div>
-          <%= link_to "Edit", edit_secured_item_path(user_item) %>
         <% end %>
       </div>
     <% else %>

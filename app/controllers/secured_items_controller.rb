@@ -19,6 +19,8 @@ class SecuredItemsController < ApplicationController
   end
 
   def update
+    @secured_item = SecuredItem.find(params[:id])
+    @secured_item.update(secured_item_params)
     redirect_to profile_path
   end
 
@@ -37,7 +39,17 @@ class SecuredItemsController < ApplicationController
   end
 
   def deactivate
-    
+    @secured_item = SecuredItem.find(params[:id])
+    return unless @secured_item.user.id == current_user.id
+
+    if @secured_item.activation_date.nil?
+      @secured_item.activation_date = DateTime.now
+    elsif DateTime.now.month == @secured_item.activation_date.month && DateTime.now.day == @secured_item.activation_date.day
+      @secured_item.expiration_date = DateTime.now + 1.day
+    else
+      @secured_item.expiration_date = DateTime.now
+    end
+    @secured_item.save
   end
 
   def secured_item_params

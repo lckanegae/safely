@@ -48,10 +48,10 @@
                     </div>
                   <% end %>
                   <div class="ml-3">
-                    <%=  button_to "Edit", edit_secured_item_path(user_item), class: "button is-dark is-small" %>
+                    <%=  link_to "Edit", edit_secured_item_path(user_item), method: "get", class: "button is-dark is-small" %>
                   </div>
                 </div>
-            </div>
+              </div>
             </div>
           </div>
         <% end %>

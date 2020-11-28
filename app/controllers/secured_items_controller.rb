@@ -15,7 +15,7 @@ class SecuredItemsController < ApplicationController
   end
 
   def edit
-    @secured_item = SecuredItem.find(params[:id])    
+    @secured_item = SecuredItem.find(params[:id])
   end
 
   def update

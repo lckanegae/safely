@@ -1,4 +1,5 @@
-$design_path = Rails.root.join('app','assets','images','item_designs')
+#Phone Seeds
+$design_path = Rails.root.join('app','assets','images','item_designs','phones')
 Dir.children($design_path).each do |design_filename|
   design_path = $design_path + design_filename
   design = File.basename(design_path, File.extname(design_path))
@@ -6,14 +7,14 @@ Dir.children($design_path).each do |design_filename|
   @item_design = ItemDesign.new(
     name: design,
     refund: Money.new(rand(100..200), "USD"),
-    item_type: "Mobile"
+    item_type: "Phone"
     )
   @item_design.design.attach(io: File.open(design_path), filename: design)
   @item_design.save!
 
   puts "Creating Item #{@item_design.name}"
 
-  ["Damage", "Loss", "Theft"].each do |type|
+  ["Broken Screen Glass", "Damaged LCD", "Water Damage", "Loss", "Theft"].each do |type|
     Subscription.create!(
       item_design: ItemDesign.find_by(name: design),
       subscription_type: type,
@@ -23,19 +24,25 @@ Dir.children($design_path).each do |design_filename|
   end
 end
 
-["Asus Zenbook 14", "MacBook Air", "Acer Aspire I5", "MacBook Pro", "Vaio FE14"].each do |design_filename|
+#Notebook Seeds
+$design_path = Rails.root.join('app','assets','images','item_designs','notebooks')
+Dir.children($design_path).each do |design_filename|
+  design_path = $design_path + design_filename
+  design = File.basename(design_path, File.extname(design_path))
+
   @item_design = ItemDesign.new(
-    name: design_filename,
+    name: design,
     refund: Money.new(rand(100..200), "USD"),
-    item_type: "Mobile"
+    item_type: "Notebook"
     )
+  @item_design.design.attach(io: File.open(design_path), filename: design)
   @item_design.save!
 
   puts "Creating Item #{@item_design.name}"
 
-  ["Damage", "Loss", "Theft"].each do |type|
+  ["Impact Damage", "Loss", "Theft"].each do |type|
     Subscription.create!(
-      item_design: ItemDesign.find_by(name: design_filename),
+      item_design: ItemDesign.find_by(name: design),
       subscription_type: type,
       price: Money.new(rand(100..200), "USD")
       )
@@ -43,19 +50,25 @@ end
   end
 end
 
-["HRV", "Fox Sport", "Honda Fit", "HB20", "Golf", "HB20 Sedan", "Captiva", "Hilux"].each do |design_filename|
+#Car Seeds
+$design_path = Rails.root.join('app','assets','images','item_designs','cars')
+Dir.children($design_path).each do |design_filename|
+  design_path = $design_path + design_filename
+  design = File.basename(design_path, File.extname(design_path))
+
   @item_design = ItemDesign.new(
-    name: design_filename,
+    name: design,
     refund: Money.new(rand(100..200), "USD"),
-    item_type: "Mobile"
+    item_type: "Car"
     )
+  @item_design.design.attach(io: File.open(design_path), filename: design)
   @item_design.save!
 
   puts "Creating Item #{@item_design.name}"
 
-  ["Damage", "Loss", "Theft"].each do |type|
+  ["Liability", "Comp & Collision", "Uninsured Motorist", "Rental & Towing"].each do |type|
     Subscription.create!(
-      item_design: ItemDesign.find_by(name: design_filename),
+      item_design: ItemDesign.find_by(name: design),
       subscription_type: type,
       price: Money.new(rand(100..200), "USD")
       )

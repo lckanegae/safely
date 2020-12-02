@@ -35,7 +35,7 @@
     <h2 class="subtitle">Currently Insured</h2>
     <% unless @user_items.nil? %>
       <div>
-        <% @user_items.each do |user_item| %>
+        <% @user_items.reverse_each do |user_item| %>
           <div class="card px-2 py-2 my-5">
             <div class="is-flex">
               <div class="card-image">

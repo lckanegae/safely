@@ -12,6 +12,8 @@ class ItemDesignsController < ApplicationController
     if params[:search].present?
       items_query = "name ILIKE :search OR item_type ILIKE :search"
       @items = ItemDesign.where(items_query, search: "%#{params[:search]}%")
+    elsif params[:item_type].present?
+      @items = ItemDesign.where(item_type: params[:item_type]) 
     else
       @items = ItemDesign.all
     end

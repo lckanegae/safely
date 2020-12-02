@@ -20,6 +20,9 @@
             <p class="is-size-6">Phone Number: <%= current_user.phone_number %></p>
             <p class="is-size-6">Birth Date: <%= current_user.birth_date %></p>
           </div>
+          <div class="mt-4">
+            <%= link_to "Edit", edit_user_registration_path, method: "get", class: "button is-dark level-item has-text-centered is-small" %>
+          </div>
         </div>
       <% end %>
     </div>
@@ -35,7 +38,7 @@
     <h2 class="subtitle">Currently Insured</h2>
     <% unless @user_items.nil? %>
       <div>
-        <% @user_items.each do |user_item| %>
+        <% @user_items.reverse_each do |user_item| %>
           <div class="card px-2 py-2 my-5">
             <div class="is-flex">
               <div class="card-image">
@@ -79,7 +82,7 @@
   </div>
 
   <div class="container mt-4">
-    <% unless @expired_items.nil? %>
+    <% if @expired_items.any? %>
       <h2 class="subtitle">Insure again</h2>
       <% @expired_items.each do |expired_item| %>
         <div class="card px-2 pt-2 my-5 is-flex">
@@ -100,6 +103,12 @@
       <% end %>
     <% end %>
   </div>
+
+  <div class="level mt-6">
+    <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "button is-dark level-item has-text-centered is-small" %>
+  </div>
+
+
 </section>
 
 

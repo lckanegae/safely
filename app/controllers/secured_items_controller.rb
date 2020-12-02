@@ -25,31 +25,32 @@ class SecuredItemsController < ApplicationController
   end
 
   def activate
-    @secured_item = SecuredItem.find(params[:id])
-    return unless @secured_item.user.id == current_user.id
+    check_secured_item
 
-    if @secured_item.activation_date.nil?
-      @secured_item.activation_date = DateTime.now
-    elsif DateTime.now.month == @secured_item.activation_date.month && DateTime.now.day == @secured_item.activation_date.day
-      @secured_item.expiration_date = DateTime.now + 1.day
-    else
-      @secured_item.expiration_date = DateTime.now
-    end
+    @secured_item.activation_date = DateTime.now
     @secured_item.save
+
+    redirect_to profile_path, notice: "Activated Item", anchor: "user_item-#{@secured_item.id}"
   end
 
   def deactivate
-    @secured_item = SecuredItem.find(params[:id])
-    return unless @secured_item.user.id == current_user.id
+    check_secured_item
 
-    if @secured_item.activation_date.nil?
-      @secured_item.activation_date = DateTime.now
-    elsif DateTime.now.month == @secured_item.activation_date.month && DateTime.now.day == @secured_item.activation_date.day
+    if DateTime.now.to_date == @secured_item.activation_date.to_date
       @secured_item.expiration_date = DateTime.now + 1.day
     else
       @secured_item.expiration_date = DateTime.now
     end
     @secured_item.save
+
+    redirect_to profile_path, notice: "Insurance Completed", anchor: "expired_item-#{@secured_item.id}"
+  end
+
+  private
+
+  def check_secured_item
+    @secured_item = SecuredItem.find(params[:id])
+    return unless @secured_item.user.id == current_user.id
   end
 
   def secured_item_params

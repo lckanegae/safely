@@ -1,11 +1,25 @@
-<section class="hero is-dark">
+<section class="hero is-light">
   <div class="hero-body">
     <div class="container">
       <% if current_user %>
-        <div class="">
-          <h3 class="">
-            Welcome <%= current_user.first_name %> <%= current_user.last_name %>!
-          </h3>
+        <div class="level">
+          <div class="card-image level-item has-text-centered">
+            <figure class="image is-128x128 is-inline-block">
+              <img class="image is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+            </figure>
+          </div>
+          <div class="container">
+            <h3 class="has-text-centered is-size-4">
+              <%= current_user.first_name %> <%= current_user.last_name %>
+            </h3>
+          </div>
+          <div class="container mt-6">
+            <h1 class="title mb-4 is-uppercase has-text-weight-bold is-size-5">Personal Info</h1>
+            <p class="is-size-6">Name: <%= current_user.first_name %> <%= current_user.last_name %></p>
+            <p class="is-size-6">Address: <%= current_user.address %></p>
+            <p class="is-size-6">Phone Number: <%= current_user.phone_number %></p>
+            <p class="is-size-6">Birth Date: <%= current_user.birth_date %></p>
+          </div>
         </div>
       <% end %>
     </div>
@@ -14,41 +28,43 @@
 
 <section class="section">
   <div class="container">
-    <h1 class="title">My Items</h1>
+    <h1 class="title is-uppercase has-text-weight-bold is-size-5">My Items</h1>
   </div>
 
-  <div class="container mt-6">
+  <div class="container mt-4">
     <h2 class="subtitle">Currently Insured</h2>
     <% unless @user_items.nil? %>
       <div>
         <% @user_items.each do |user_item| %>
-          <div class="card px-2 pt-2 my-5 is-flex">
-            <div class="card-image">
-              <figure class="image is-96x96">
-                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="card-content-title pb-2">
-                <h2 class="has-text-weight-bold">
-                  <%= user_item.item_design.name %>
-                </h2>
+          <div class="card px-2 py-2 my-5">
+            <div class="is-flex">
+              <div class="card-image">
+                <figure class="image is-96x96">
+                  <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                </figure>
               </div>
-              <div class="card-content-options">
-                <div class="is-flex is-justify-content-space-between">
-                  <% if user_item.activation_date.nil? %>
-                    <div class="">
-                      <%= button_to "Activate", activate_path(user_item),
-                       method: :patch, data: { confirm: "Please confirm the insurance activation." }, class: "button is-dark is-small" %>
+              <div class="card-content pt-3">
+                <div class="card-content-title pb-2">
+                  <h2 class="has-text-weight-bold">
+                    <%= user_item.item_design.name %>
+                  </h2>
+                </div>
+                <div class="card-content-options">
+                  <div class="is-flex is-justify-content-space-between">
+                    <% if user_item.activation_date.nil? %>
+                      <div class="">
+                        <%= button_to "Activate", activate_path(user_item),
+                         method: :patch, data: { confirm: "Please confirm the insurance activation." }, class: "button is-dark is-small" %>
+                      </div>
+                    <% else %>
+                      <div class="">
+                        <%= button_to "Deactivate", deactivate_path(user_item),
+                         method: :patch, data: { confirm: "Please confirm the insurance deactivation." }, class: "button is-dark is-small" %>
+                      </div>
+                    <% end %>
+                    <div class="ml-3">
+                      <%=  link_to "Edit", edit_secured_item_path(user_item), method: "get", class: "button is-dark is-small" %>
                     </div>
-                  <% else %>
-                    <div class="">
-                      <%= button_to "Deactivate", deactivate_path(user_item),
-                       method: :patch, data: { confirm: "Please confirm the insurance deactivation." }, class: "button is-dark is-small" %>
-                    </div>
-                  <% end %>
-                  <div class="ml-3">
-                    <%=  link_to "Edit", edit_secured_item_path(user_item), method: "get", class: "button is-dark is-small" %>
                   </div>
                 </div>
               </div>
@@ -62,7 +78,7 @@
     <% end %>
   </div>
 
-  <div class="container mt-6">
+  <div class="container mt-4">
     <% unless @expired_items.nil? %>
       <h2 class="subtitle">Insure again</h2>
       <% @expired_items.each do |expired_item| %>

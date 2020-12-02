@@ -43,7 +43,7 @@
             <div class="is-flex">
               <div class="card-image">
                 <figure class="image is-96x96">
-                  <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                  <%= image_tag user_item.item_design.design %>
                 </figure>
               </div>
               <div class="card-content pt-3">
@@ -94,7 +94,7 @@
         <div class="card px-2 pt-2 my-5 is-flex" id="expired_item-<%= expired_item.id %>">
           <div class="card-image">
             <figure class="image is-96x96">
-              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+              <%= image_tag expired_item.item_design.design %>
             </figure>
           </div>
           <div class="card-content">

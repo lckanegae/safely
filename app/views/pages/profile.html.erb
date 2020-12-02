@@ -36,10 +36,10 @@
 
   <div class="container mt-4">
     <h2 class="subtitle">Currently Insured</h2>
-    <% unless @user_items.nil? %>
+    <% if @user_items.any? %>
       <div>
         <% @user_items.reverse_each do |user_item| %>
-          <div class="card px-2 py-2 my-5">
+          <div class="card px-2 py-2 my-5" id="user_item-<%= user_item.id %>">
             <div class="is-flex">
               <div class="card-image">
                 <figure class="image is-96x96">
@@ -55,14 +55,18 @@
                 <div class="card-content-options">
                   <div class="is-flex is-justify-content-space-between">
                     <% if user_item.activation_date.nil? %>
-                      <div class="">
+                      <div>
                         <%= button_to "Activate", activate_path(user_item),
-                         method: :patch, data: { confirm: "Please confirm the insurance activation." }, class: "button is-dark is-small" %>
+                          method: :patch, data: { confirm: "Please confirm the insurance activation." },
+                          class: "button is-dark is-small",
+                          remote: true %>
                       </div>
                     <% else %>
-                      <div class="">
+                      <div>
                         <%= button_to "Deactivate", deactivate_path(user_item),
-                         method: :patch, data: { confirm: "Please confirm the insurance deactivation." }, class: "button is-dark is-small" %>
+                          method: :patch, data: { confirm: "Please confirm the insurance deactivation." },
+                          class: "button is-dark is-small",
+                          remote: true %>
                       </div>
                     <% end %>
                     <div class="ml-3">
@@ -76,8 +80,10 @@
         <% end %>
       </div>
     <% else %>
-      <h1>You still don't have any insurance options</h1>
-      <%= link_to "Add Some", item_designs_path %>
+      <div class="my-5">
+        <h1>You still don't have any insurance options</h1>
+        <%= button_to "Add Some", item_designs_path, method: 'get' %>
+      </div>
     <% end %>
   </div>
 
@@ -85,7 +91,7 @@
     <% if @expired_items.any? %>
       <h2 class="subtitle">Insure again</h2>
       <% @expired_items.each do |expired_item| %>
-        <div class="card px-2 pt-2 my-5 is-flex">
+        <div class="card px-2 pt-2 my-5 is-flex" id="expired_item-<%= expired_item.id %>">
           <div class="card-image">
             <figure class="image is-96x96">
               <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">

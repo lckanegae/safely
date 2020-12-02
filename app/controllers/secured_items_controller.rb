@@ -30,7 +30,7 @@ class SecuredItemsController < ApplicationController
     @secured_item.activation_date = DateTime.now
     @secured_item.save
 
-    redirect_to profile_path, notice: "Activated Item", anchor: "user_item-#{@secured_item.id}"
+    redirect_to profile_path(anchor: "user_item-#{@secured_item.id}"), notice: "Activated Item"
   end
 
   def deactivate
@@ -43,7 +43,7 @@ class SecuredItemsController < ApplicationController
     end
     @secured_item.save
 
-    redirect_to profile_path, notice: "Insurance Completed", anchor: "expired_item-#{@secured_item.id}"
+    redirect_to profile_path(anchor: "expired_item-#{@secured_item.id}"), notice: "Insurance Completed"
   end
 
   private

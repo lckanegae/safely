@@ -1,0 +1,58 @@
+.search-box {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 0px 5px 1px #444444;
+  justify-content: space-between !important;
+  border-radius: 40px !important;
+  padding: 4px 9px;
+  display: inline-block;
+}
+
+.form-control {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+}
+
+.search-text {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  float: left !important;
+  vertical-align: middle;
+}
+
+.search-text:focus {
+  outline: 0px;
+  border: none;
+  background: white;
+}
+
+.search-icon{
+  float: right !important;
+  align-self: center;
+  width: 10%;
+  padding-right: 45px;
+  vertical-align: middle;
+}
+
+.btn-default {
+  border-style: none;
+  outline-width: 0;
+  background-color: transparent;
+}
+
+input.form-control:focus {
+    outline-width: 0;
+    background: white;
+}
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  }

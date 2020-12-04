@@ -1,16 +1,88 @@
 <section class="section pb-5">
   <div class="">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h1>Search an item</h1>
-        <%= form_tag(item_designs_path, method: "get") do %>
-        <%#= select_tag "search", options_from_collection_for_select(ItemDesign.all, :name, :name), class: 'select2'%>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag("Search") %>
-      <% end %>
+      <div class="search-box is-flex is-justify-content-center">
+        <div class="search-text">
+          <%= form_tag(item_designs_path, method: "get") do %>
+          <%#= select_tag "search", options_from_collection_for_select(ItemDesign.all, :name, :name), class: 'select2'%>
+          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for an item" %>
+        </div>
+        <div class="is-flex search-icon">
+          <%= button_tag(type: "submit", class: "btn-default") do %>
+            <i class="fas fa-search fa-lg search-icon"></i>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </section>
-<%= link_to "Car Insurance", item_designs_path(item_type: "Car") %><br>
-<%= link_to "Mobile Phone Insurance", item_designs_path(item_type: "Phone") %><br>
-<%= link_to "Notebook Insurance", item_designs_path(item_type: "Notebook") %>
 
+<section class="section">
+  <div class="container">
+    <%= link_to item_designs_path(item_type: "Car") do %><br>
+      <div class="card px-2 py-2">
+        <div class="is-flex">
+          <div class="card-image">
+            <figure class="image is-96x96">
+              <img src="https://bulma.io/images/placeholders/96x96.png">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="card-content-title pb-2">
+              <h2 class="title is-uppercase has-text-weight-bold is-size-6 pt-2">
+                <p>Car Insurance</p>
+               </h2>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <%= link_to item_designs_path(item_type: "Phone") do %><br>
+      <div class="card px-2 py-2">
+        <div class="is-flex">
+          <div class="card-image">
+            <figure class="image is-96x96">
+              <img src="https://bulma.io/images/placeholders/96x96.png">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="card-content-title pb-2">
+              <h2 class="title is-uppercase has-text-weight-bold is-size-6">
+                <p>Mobile Phone Insurance</p>
+               </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class="container">
+    <%= link_to item_designs_path(item_type: "Notebook") do %><br>
+      <div class="card px-2 py-2">
+        <div class="is-flex">
+          <div class="card-image">
+            <figure class="image is-96x96">
+              <img src="https://bulma.io/images/placeholders/96x96.png">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="card-content-title pb-2">
+              <h2 class="title is-uppercase has-text-weight-bold is-size-6">
+                <p>Notebook Insurance</p>
+               </h2>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+
+</section>

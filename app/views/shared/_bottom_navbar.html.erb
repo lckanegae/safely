@@ -5,30 +5,30 @@
 
         <a class="nav-icon-container" href="/">
           <div class="nav-icon-content">
-            <i class="fas fa-home fa-lg"></i>
+            <i class="fas fa-home fa-lg nav-icon"></i>
+            <div class="nav-icon-text">Home</div>
           </div>
-          <div class="nav-icon-text">Home</div>
         </a>
 
         <a class="nav-icon-container" href="/search">
           <div class="nav-icon-content">
-            <i class="fas fa-search fa-lg"></i>
+            <i class="fas fa-search fa-lg nav-icon"></i>
+            <div class="nav-icon-text">Search</div>
           </div>
-          <div class="nav-icon-text">Search</div>
         </a>
 
         <%= link_to(chatrooms_path, method: :post, class: "nav-icon-container") do %>
           <div class="nav-icon-content">
-            <i class="fas fa-comment-alt fa-lg"></i>
+            <i class="fas fa-comment-alt fa-lg nav-icon"></i>
+            <div class="nav-icon-text">Support</div>
           </div>
-          <div class="nav-icon-text">Support</div>
         <% end %>
 
         <a class="nav-icon-container" href="/profile">
           <div class="nav-icon-content">
-            <i class="fas fa-user-circle fa-lg"></i>
+            <i class="fas fa-user-circle fa-lg nav-icon"></i>
+            <div class="nav-icon-text">Profile</div>
           </div>
-          <div class="nav-icon-text">Profile</div>
         </a>
 
       </div>

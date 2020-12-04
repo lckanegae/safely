@@ -2,34 +2,72 @@
   <div>
     <nav class="nav-bar-container" aria-hidden="false">
       <div class="nav-bar-content">
-
-        <a class="nav-icon-container" href="/">
-          <div class="nav-icon-content">
-            <i class="fas fa-home fa-lg"></i>
-          </div>
-          <div class="nav-icon-text">Home</div>
-        </a>
-
-        <a class="nav-icon-container" href="/search">
-          <div class="nav-icon-content">
-            <i class="fas fa-search fa-lg"></i>
-          </div>
-          <div class="nav-icon-text">Search</div>
-        </a>
-
-        <%= link_to(chatrooms_path, method: :post, class: "nav-icon-container") do %>
-          <div class="nav-icon-content">
-            <i class="fas fa-comment-alt fa-lg"></i>
-          </div>
-          <div class="nav-icon-text">Support</div>
+        <% if current_page?(root_path) %>
+          <a class="nav-icon-container" href="/">
+            <div class="nav-icon-content">
+              <i class="fas fa-home fa-lg nav-icon"></i>
+            </div>
+            <div class="nav-icon-text nav-icon-text-select">Home</div>
+          </a>
+        <% else %>
+          <a class="nav-icon-container" href="/">
+            <div class="nav-icon-content">
+              <i class="fas fa-home fa-lg"></i>
+            </div>
+            <div class="nav-icon-text">Home</div>
+          </a>
         <% end %>
 
-        <a class="nav-icon-container" href="/profile">
-          <div class="nav-icon-content">
-            <i class="fas fa-user-circle fa-lg"></i>
-          </div>
-          <div class="nav-icon-text">Profile</div>
-        </a>
+        <% if current_page?(search_path) %>
+          <a class="nav-icon-container" href="/search">
+            <div class="nav-icon-content">
+              <i class="fas fa-search fa-lg nav-icon"></i>
+            </div>
+            <div class="nav-icon-text nav-icon-text-select">Search</div>
+          </a>
+        <% else %>
+          <a class="nav-icon-container" href="/search">
+            <div class="nav-icon-content">
+              <i class="fas fa-search fa-lg"></i>
+            </div>
+            <div class="nav-icon-text">Search</div>
+          </a>
+        <% end %>
+
+        <% if @chatroom %>
+          <% if current_page?(chatroom_path(@chatroom)) %>
+            <%= link_to(chatrooms_path, method: :post, class: "nav-icon-container") do %>
+              <div class="nav-icon-content">
+                <i class="fas fa-comment-alt fa-lg nav-icon"></i>
+              </div>
+              <div class="nav-icon-text nav-icon-text-select">Support</div>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= link_to(chatrooms_path, method: :post, class: "nav-icon-container") do %>
+            <div class="nav-icon-content">
+              <i class="fas fa-comment-alt fa-lg"></i>
+            </div>
+            <div class="nav-icon-text">Support</div>
+          <% end %>
+        <% end %>
+
+
+        <% if current_page?(profile_path) %>
+          <a class="nav-icon-container" href="/profile">
+            <div class="nav-icon-content">
+              <i class="fas fa-user-circle fa-lg nav-icon"></i>
+            </div>
+            <div class="nav-icon-text nav-icon-text-select">Profile</div>
+          </a>
+        <% else %>
+          <a class="nav-icon-container" href="/profile">
+            <div class="nav-icon-content">
+              <i class="fas fa-user-circle fa-lg"></i>
+            </div>
+            <div class="nav-icon-text">Profile</div>
+          </a>
+        <% end %>
 
       </div>
     </nav>

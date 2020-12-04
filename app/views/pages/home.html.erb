@@ -5,7 +5,7 @@
         <div class="search-text">
           <%= form_tag(item_designs_path, method: "get") do %>
           <%#= select_tag "search", options_from_collection_for_select(ItemDesign.all, :name, :name), class: 'select2'%>
-          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search an item" %>
+          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for an item" %>
         </div>
         <div class="is-flex search-icon">
           <%= button_tag(type: "submit", class: "btn-default") do %>

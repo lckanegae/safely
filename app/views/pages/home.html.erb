@@ -10,7 +10,64 @@
     </div>
   </div>
 </section>
-<%= link_to "Car Insurance", item_designs_path(item_type: "Car") %><br>
-<%= link_to "Mobile Phone Insurance", item_designs_path(item_type: "Phone") %><br>
-<%= link_to "Notebook Insurance", item_designs_path(item_type: "Notebook") %>
 
+<section class="section">
+  <div class="container">
+    <%= link_to item_designs_path(item_type: "Car") do %><br>
+      <div class="card px-2 pt-2 is-flex">
+        <div class="card-image">
+          <figure class="image is-96x96">
+
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="card-content-title pb-2">
+            <h2 class="has-text-weight-bold">
+              <p>Car Insurance</p>
+             </h2>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <%= link_to item_designs_path(item_type: "Phone") do %><br>
+      <div class="card px-2 pt-2 is-flex">
+        <div class="card-image">
+          <figure class="image is-96x96">
+
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="card-content-title pb-2">
+            <h2 class="has-text-weight-bold">
+              <p>Mobile Phone Insurance</p>
+             </h2>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class="container">
+    <%= link_to item_designs_path(item_type: "Notebook") do %><br>
+      <div class="card px-2 pt-2 is-flex">
+        <div class="card-image">
+          <figure class="image is-96x96">
+
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="card-content-title pb-2">
+            <h2 class="has-text-weight-bold">
+              <p>Notebook Insurance</p>
+             </h2>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</section>

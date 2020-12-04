@@ -1,5 +1,21 @@
-.image img {
-    display: block;
-    height: 100%;
-    width: auto;
+.profile-image {
+  display: block;
+  width: auto;
+  max-width: 150px;
+  height: auto;
+  max-height: 150px;
+}
+
+.image-item img {
+  display: block;
+  width: auto;
+  max-width: 96px;
+  height: auto;
+  max-height: 96px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

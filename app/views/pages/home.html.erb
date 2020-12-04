@@ -1,13 +1,19 @@
 <section class="section pb-5">
   <div class="">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h1>Search an item</h1>
-        <%= form_tag(item_designs_path, method: "get") do %>
-        <%#= select_tag "search", options_from_collection_for_select(ItemDesign.all, :name, :name), class: 'select2'%>
-        <%= text_field_tag :search, params[:search] %>
-        <i class="fas fa-search fa-lg"></i>
-        <%= submit_tag("Search") %>
-      <% end %>
+      <div class="search-box is-flex is-justify-content-center">
+        <div class="search-text">
+          <%= form_tag(item_designs_path, method: "get") do %>
+          <%#= select_tag "search", options_from_collection_for_select(ItemDesign.all, :name, :name), class: 'select2'%>
+          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search an item" %>
+        </div>
+        <div class="is-flex search-icon">
+          <%= button_tag(type: "submit", class: "btn-default") do %>
+            <i class="fas fa-search fa-lg search-icon"></i>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </section>

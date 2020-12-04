@@ -11,10 +11,11 @@
 .form-control {
   border: none;
   background-color: transparent;
+  width: 100%;
 }
 
 .search-text {
-  width: 90%;
+  width: 100%;
   border: none;
   background-color: transparent;
   float: left !important;
@@ -23,6 +24,7 @@
 
 .search-text:focus {
   outline: 0px;
+  border: none;
 }
 
 .search-icon{

@@ -34,12 +34,24 @@
           </a>
         <% end %>
 
-        <%= link_to(chatrooms_path, method: :post, class: "nav-icon-container") do %>
-          <div class="nav-icon-content">
-            <i class="fas fa-comment-alt fa-lg"></i>
-          </div>
-          <div class="nav-icon-text">Support</div>
+        <% if @chatroom %>
+          <% if current_page?(chatroom_path(@chatroom)) %>
+            <%= link_to(chatrooms_path, method: :post, class: "nav-icon-container") do %>
+              <div class="nav-icon-content">
+                <i class="fas fa-comment-alt fa-lg nav-icon"></i>
+              </div>
+              <div class="nav-icon-text nav-icon-text-select">Support</div>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= link_to(chatrooms_path, method: :post, class: "nav-icon-container") do %>
+            <div class="nav-icon-content">
+              <i class="fas fa-comment-alt fa-lg"></i>
+            </div>
+            <div class="nav-icon-text">Support</div>
+          <% end %>
         <% end %>
+
 
         <% if current_page?(profile_path) %>
           <a class="nav-icon-container" href="/profile">

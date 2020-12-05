@@ -3,10 +3,8 @@
     <div class="card-header is-shadowless">
       <h3 class="card-header-title is-centered"><%= @item_design.name %></h3>
     </div>
-    <div class="card-image">
-      <figure class="image is-1by1">
-        <%= image_tag @item_design.design %>
-      </figure>
+    <div class="show-card">
+      <%= image_tag @item_design.design, class: "show-image" %>
     </div>
   </div>
 

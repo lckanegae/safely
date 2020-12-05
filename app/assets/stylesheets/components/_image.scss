@@ -19,3 +19,18 @@
   justify-content: center;
   align-items: center;
 }
+
+.show-card {
+  display: flex;
+  justify-content: center;
+}
+
+.show-image {
+  display: block;
+  width: auto;
+  max-width: 150px;
+  height: auto;
+  max-height: 150px;
+}
+
+

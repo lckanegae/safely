@@ -3,10 +3,8 @@
     <div class="card-header is-shadowless">
       <h3 class="card-header-title is-centered"><%= @item_design.name %></h3>
     </div>
-    <div class="card-image">
-      <figure class="image is-1by1">
-        <%= image_tag @item_design.design %>
-      </figure>
+    <div class="show-card px-3 pt-3 pb-5">
+      <%= image_tag @item_design.design, class: "show-image" %>
     </div>
   </div>
 
@@ -24,7 +22,7 @@
          include_hidden: false %>
       </div>
       <%= f.hidden_field :item_design_id, value: @item_design.id %>
-      <div>
+      <div class="has-text-centered">
         <%= f.button :submit, "Insure this item", class: "button is-dark" %>
       </div>
     <% end %>

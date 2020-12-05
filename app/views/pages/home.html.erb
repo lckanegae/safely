@@ -18,20 +18,18 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section pt-0">
   <div class="container">
     <%= link_to item_designs_path(item_type: "Car") do %><br>
       <div class="card px-2 py-2">
-        <div class="is-flex">
-          <div class="card-image">
-            <figure class="image is-96x96">
-              <img src="https://bulma.io/images/placeholders/96x96.png">
-            </figure>
+        <div class="is-flex home-card">
+          <div class="home-icon">
+            <i class="fas fa-car fa-3x"></i>
           </div>
-          <div class="card-content">
-            <div class="card-content-title pb-2">
+          <div class="card-content home-card-text">
+            <div class="card-content-title">
               <h2 class="title is-uppercase has-text-weight-bold is-size-6 pt-2">
-                <p>Car Insurance</p>
+                <p>Cars</p>
                </h2>
             </div>
           </div>
@@ -44,16 +42,14 @@
   <div class="container">
     <%= link_to item_designs_path(item_type: "Phone") do %><br>
       <div class="card px-2 py-2">
-        <div class="is-flex">
-          <div class="card-image">
-            <figure class="image is-96x96">
-              <img src="https://bulma.io/images/placeholders/96x96.png">
-            </figure>
+        <div class="is-flex home-card">
+          <div class="home-icon">
+            <i class="fas fa-mobile-alt fa-3x"></i>
           </div>
           <div class="card-content">
-            <div class="card-content-title pb-2">
+            <div class="card-content-title">
               <h2 class="title is-uppercase has-text-weight-bold is-size-6">
-                <p>Mobile Phone Insurance</p>
+                <p>Mobiles</p>
                </h2>
             </div>
           </div>
@@ -66,16 +62,14 @@
   <div class="container">
     <%= link_to item_designs_path(item_type: "Notebook") do %><br>
       <div class="card px-2 py-2">
-        <div class="is-flex">
-          <div class="card-image">
-            <figure class="image is-96x96">
-              <img src="https://bulma.io/images/placeholders/96x96.png">
-            </figure>
+        <div class="is-flex home-card">
+          <div class="home-icon">
+            <i class="fas fa-laptop fa-3x"></i>
           </div>
           <div class="card-content">
-            <div class="card-content-title pb-2">
+            <div class="card-content-title">
               <h2 class="title is-uppercase has-text-weight-bold is-size-6">
-                <p>Notebook Insurance</p>
+                <p>Notebooks</p>
                </h2>
             </div>
           </div>
@@ -83,6 +77,14 @@
 
       </div>
     <% end %>
+  </div>
+
+  <div class="level my-5">
+    <%= link_to "Log In", new_user_session_path, method: :get, class: "button is-dark level-item has-text-centered" %>
+  </div>
+
+  <div class="level my-2">
+    <%= link_to "Sign Up", new_user_registration_path, method: :get, class: "button is-dark level-item has-text-centered" %>
   </div>
 
 </section>

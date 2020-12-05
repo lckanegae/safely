@@ -18,10 +18,4 @@ class ItemDesignsController < ApplicationController
       @items = ItemDesign.all
     end
   end
-
-  def spending_math
-    time_spending = (secured_items.expiration_date - secured_items.activation_date)
-    total_price = time_spending * subscription.price
-    return total_price
-  end
 end

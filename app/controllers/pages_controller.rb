@@ -21,7 +21,21 @@ class PagesController < ApplicationController
         user_item
       end
     end
+
     @currently = @currently - @expired
+
+    @item_designs = []
+    @expired.each do |item|
+      @expired.each do |sec_item|
+        @item_designs << sec_item.item_design.name unless @item_designs.include?(sec_item.item_design.name)
+      end
+    end
+
+    @item_designs.map! do |item_name|
+      ItemDesign.find_by(name: item_name)
+
+    end
+
     @activate = all_user_items - @currently - @expired
   end
 end

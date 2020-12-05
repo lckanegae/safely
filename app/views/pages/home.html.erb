@@ -1,16 +1,90 @@
 <section class="section pb-5">
   <div class="">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h1>Search an item</h1>
-        <%= form_tag(item_designs_path, method: "get") do %>
-        <%#= select_tag "search", options_from_collection_for_select(ItemDesign.all, :name, :name), class: 'select2'%>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag("Search") %>
-      <% end %>
+      <div class="search-box is-flex is-justify-content-center">
+        <div class="search-text">
+          <%= form_tag(item_designs_path, method: "get") do %>
+          <%#= select_tag "search", options_from_collection_for_select(ItemDesign.all, :name, :name), class: 'select2'%>
+          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for an item" %>
+        </div>
+        <div class="is-flex search-icon">
+          <%= button_tag(type: "submit", class: "btn-default") do %>
+            <i class="fas fa-search fa-lg search-icon"></i>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </section>
-<%= link_to "Car Insurance", item_designs_path(item_type: "Car") %><br>
-<%= link_to "Mobile Phone Insurance", item_designs_path(item_type: "Phone") %><br>
-<%= link_to "Notebook Insurance", item_designs_path(item_type: "Notebook") %>
 
+<section class="section pt-0">
+  <div class="container">
+    <%= link_to item_designs_path(item_type: "Car") do %><br>
+      <div class="card px-2 py-2">
+        <div class="is-flex home-card">
+          <div class="home-icon">
+            <i class="fas fa-car fa-3x"></i>
+          </div>
+          <div class="card-content home-card-text">
+            <div class="card-content-title">
+              <h2 class="title is-uppercase has-text-weight-bold is-size-6 pt-2">
+                <p>Cars</p>
+               </h2>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <%= link_to item_designs_path(item_type: "Phone") do %><br>
+      <div class="card px-2 py-2">
+        <div class="is-flex home-card">
+          <div class="home-icon">
+            <i class="fas fa-mobile-alt fa-3x"></i>
+          </div>
+          <div class="card-content">
+            <div class="card-content-title">
+              <h2 class="title is-uppercase has-text-weight-bold is-size-6">
+                <p>Mobiles</p>
+               </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class="container">
+    <%= link_to item_designs_path(item_type: "Notebook") do %><br>
+      <div class="card px-2 py-2">
+        <div class="is-flex home-card">
+          <div class="home-icon">
+            <i class="fas fa-laptop fa-3x"></i>
+          </div>
+          <div class="card-content">
+            <div class="card-content-title">
+              <h2 class="title is-uppercase has-text-weight-bold is-size-6">
+                <p>Notebooks</p>
+               </h2>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+
+  <div class="level my-5">
+    <%= link_to "Log In", new_user_session_path, method: :get, class: "button is-dark level-item has-text-centered" %>
+  </div>
+
+  <div class="level my-2">
+    <%= link_to "Sign Up", new_user_registration_path, method: :get, class: "button is-dark level-item has-text-centered" %>
+  </div>
+
+</section>

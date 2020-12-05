@@ -2,12 +2,19 @@
 
   <div class="">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h1>Search an item</h1>
-        <%= form_tag(item_designs_path, method: "get") do %>
-        <%#= select_tag "search", options_from_collection_for_select(ItemDesign.all, :item_type, :name), class: 'select2'%>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag("Search") %>
-      <% end %>
+     <div class="search-box is-flex is-justify-content-center">
+        <div class="search-text">
+          <%= form_tag(item_designs_path, method: "get") do %>
+          <%#= select_tag "search", options_from_collection_for_select(ItemDesign.all, :name, :name), class: 'select2'%>
+          <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for an item" %>
+        </div>
+        <div class="is-flex search-icon">
+          <%= button_tag(type: "submit", class: "btn-default") do %>
+            <i class="fas fa-search fa-lg search-icon"></i>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 
@@ -20,7 +27,7 @@
       <%= link_to item_design_path(item) do %>
         <div class="card px-2 pt-2 my-5 is-flex">
           <div class="card-image">
-            <figure class="image is-96x96">
+            <figure class="image image-item is-96x96 center">
               <%= image_tag item.design %>
             </figure>
           </div>

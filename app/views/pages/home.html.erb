@@ -79,12 +79,14 @@
     <% end %>
   </div>
 
-  <div class="level my-5">
-    <%= link_to "Log In", new_user_session_path, method: :get, class: "button is-dark level-item has-text-centered" %>
-  </div>
+  <% unless current_user %>
+    <div class="level my-5">
+      <%= link_to "Log In", new_user_session_path, method: :get, class: "button is-dark level-item has-text-centered" %>
+    </div>
 
-  <div class="level my-2">
-    <%= link_to "Sign Up", new_user_registration_path, method: :get, class: "button is-dark level-item has-text-centered" %>
-  </div>
+    <div class="level my-2">
+      <%= link_to "Sign Up", new_user_registration_path, method: :get, class: "button is-dark level-item has-text-centered" %>
+    </div>
+  <% end %>
 
 </section>

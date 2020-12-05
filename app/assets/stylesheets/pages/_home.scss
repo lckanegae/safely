@@ -1,1 +1,25 @@
 // Specific CSS for your home-page
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-card {
+  align-items: center;
+  height: 96px;
+}
+
+.home-icon {
+  flex-basis: 45%;
+  text-align: center;
+  padding-left: 30px;
+}
+
+.home-card-text {
+  flex-grow: 1;
+}
+
+.card-content {
+  padding: 0px;
+}

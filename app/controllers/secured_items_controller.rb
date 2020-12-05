@@ -1,12 +1,15 @@
 class SecuredItemsController < ApplicationController
   def create
-    return if secured_item_params[:subscriptions].nil?
+    return if secured_item_params[:subscription_ids].nil?
 
-    @secured_item = SecuredItem.new(item_design_id: secured_item_params[:item_design_id])
+    @secured_item = SecuredItem.new(secured_item_params)
     @secured_item.user = current_user
-    secured_item_params[:subscriptions].each do |subscription_id|
-      SecuredSubscription.create!(subscription_id: subscription_id, secured_item: @secured_item)
+
+    if @secured_item.use_date == false
+      @secured_item.expiration_date = nil
+      @secured_item.activation_date = nil
     end
+
     if @secured_item.save
       redirect_to profile_path, notice: "Insurance option created!"
     else
@@ -19,6 +22,8 @@ class SecuredItemsController < ApplicationController
   end
 
   def update
+    check_secured_item
+
     @secured_item = SecuredItem.find(params[:id])
     @secured_item.update(secured_item_params)
     redirect_to profile_path
@@ -37,7 +42,8 @@ class SecuredItemsController < ApplicationController
     check_secured_item
 
     if DateTime.now.to_date == @secured_item.activation_date.to_date
-      @secured_item.expiration_date = DateTime.now + 1.day
+      @secured_item.expiration_date = DateTime.now
+      one_day_price
     else
       @secured_item.expiration_date = DateTime.now
     end
@@ -48,12 +54,20 @@ class SecuredItemsController < ApplicationController
 
   private
 
+  def one_day_price
+    subscription_total = SecuredSubscription.where(secured_item: @secured_item).map do |secured_subscription|
+      secured_subscription.subscription.price
+    end
+
+    @secured_item.total_price_cents = subscription_total.sum * 100
+  end
+
   def check_secured_item
     @secured_item = SecuredItem.find(params[:id])
     return unless @secured_item.user.id == current_user.id
   end
 
   def secured_item_params
-    params.require(:secured_item).permit(:activation_date, :expiration_date, :id, :item_design_id, subscriptions: [])
+    params.require(:secured_item).permit(:activation_date, :use_date, :expiration_date, :id, :item_design_id, subscription_ids: [])
   end
 end

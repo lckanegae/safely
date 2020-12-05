@@ -14,10 +14,14 @@
     <%= simple_form_for @secured_item do |f| %>
       <div class="card px-2 py-2 mb-5">
         <div class="px-2 py-2">
-          <%= f.input :activation_date, as: :date %>
+          <%= f.input :activation_date, as: :date,
+              start_year: Date.today.year,
+              end_year: Date.today.year %>
         </div>
         <div class="px-2 py-2">
-          <%= f.input :expiration_date, as: :date %>
+          <%= f.input :expiration_date, as: :date,
+              start_year: Date.today.year,
+              end_year: Date.today.year %>
         </div>
         <div class="has-text-centered">
           <%= f.button :submit, "Update your insurance", class: "button is-dark my-5" %>

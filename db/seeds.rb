@@ -94,10 +94,16 @@ end
   4.times do
     @item_design = ItemDesign.all.sample()
 
-    secured_item = SecuredItem.create!(
+    secured_item = SecuredItem.new(
       user: @user,
-      item_design: @item_design
+      item_design: @item_design,
+      use_date: rand(0..1)
       )
+    if secured_item.use_date == 1
+      secured_item.activation_date = DateTime.now
+      secured_item.deactivation_date = DateTime.now + rand(2..5).days
+    end
+    secured_item.save!
 
     Subscription.where(item_design: @item_design).each do |subscription|
     SecuredSubscription.create!(

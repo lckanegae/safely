@@ -1,8 +1,15 @@
 // Specific CSS for your home-page
+
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.card {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1.5px solid #2f2f2f;
 }
 
 .home-card {

@@ -37,6 +37,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'devise'
 gem 'bulma-rails', '~> 0.9.0'
+# gem "bulma-rails", github: "diproart/bulma-rails"
+gem 'bulma-extensions-rails'
 
 gem 'money-rails'
 gem 'cpf_utils'

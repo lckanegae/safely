@@ -1,16 +1,23 @@
-.card {
-
-}
-
-.card-image {
-
-}
-
-.card-content {
-
-}
-
 .is-vertical-center {
   display: flex;
   align-items: center;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  // justify-content: space-between;
+}
+
+.subscriptions {
+  padding: 10px 10px;
+}
+
+// .switch-test {
+//   height: 50px;
+//   align-items: center;
+// }
+
+.subscription-infos {
+  width: 60vw;
 }

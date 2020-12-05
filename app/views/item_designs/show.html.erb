@@ -11,16 +11,19 @@
   <div>
     <%= simple_form_for @secured_item do |f| %>
       <div class="card px-2 py-2 mb-5">
-        <%= f.input_field :subscription_ids, as: :check_boxes, :collection => @subscriptions,
-         :label_method => lambda { |subscription|
-            "<div class=\"test\">
-              <h3>#{subscription.subscription_type}</h3>
-              <h3>#{subscription.price.format}</h3><br>
-            </div>".html_safe
-          },
-         label: false,
-         include_hidden: false,
-         class: "switch" %>
+        <div class="subscriptions">
+          <%= f.input_field :subscription_ids, as: :check_boxes,
+           :collection => @subscriptions,
+           :label_method => lambda { |subscription|
+              "<div class=\"subscription-infos\">
+                <h3>#{subscription.subscription_type}</h3>
+                <h3>#{subscription.price.format}</h3><br>
+              </div>".html_safe
+            },
+           label: false,
+           include_hidden: false,
+           class: "switch is-rtl mt-5" %>
+        </div>
       </div>
       <%= f.hidden_field :item_design_id, value: @item_design.id %>
       <div class="card px-2 py-2 mb-5">

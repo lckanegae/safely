@@ -8,12 +8,13 @@ class SecuredItem < ApplicationRecord
   private
 
   def calculate_price
-    return if self.expiration_date.nil?
+    return unless self.expiration_date && self.expiration_date.to_date.past? && self.total_price_cents
 
     total_days = self.expiration_date - self.activation_date
     subscription_total = SecuredSubscription.where(secured_item: self).map do |secured_subscription|
       secured_subscription.subscription.price
     end
+
     self.total_price_cents = total_days * subscription_total.sum * 100
   end
 end

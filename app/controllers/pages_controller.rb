@@ -7,11 +7,21 @@ class PagesController < ApplicationController
 
   def profile
     all_user_items = SecuredItem.where(user: current_user)
-    @expired_items = all_user_items.select do |user_item|
-      unless user_item.expiration_date.nil?
+
+    @expired = all_user_items.select do |user_item|
+      if user_item.expiration_date
+        unless user_item.expiration_date.to_date.future?
+          user_item
+        end
+      end
+    end
+
+    @currently = all_user_items.select do |user_item|
+      if user_item.activation_date || (user_item.activation_date && user_item.expiration_date.past?)
         user_item
       end
     end
-    @user_items = all_user_items - @expired_items
+    @currently = @currently - @expired
+    @activate = all_user_items - @currently - @expired
   end
 end

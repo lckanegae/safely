@@ -22,13 +22,15 @@
             },
            label: false,
            include_hidden: false,
-           class: "switch is-rtl" %>
+           class: "switch is-info is-rtl" %>
         </div>
       </div>
+
       <%= f.hidden_field :item_design_id, value: @item_design.id %>
       <div class="card px-2 py-2 mb-5">
-        <div>
-          <%= f.input :use_date, as: :boolean, class: "styled b-checkbox is-primary",
+
+        <div class="b-checkbox is-warning">
+          <%= f.input :use_date, as: :boolean, input_html: { type: 'checkbox' }, class: "styled",
               :label => "   (Optional) Select start/end date for your insurance." %>
         </div>
 

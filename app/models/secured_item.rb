@@ -4,6 +4,7 @@ class SecuredItem < ApplicationRecord
   has_many :secured_subscriptions
   has_many :subscriptions, through: :secured_subscriptions
   before_update :calculate_price
+  monetize :total_price_cents
 
   private
 

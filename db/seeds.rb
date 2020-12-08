@@ -1,3 +1,9 @@
+SecuredSubscription.destroy_all
+SecuredItem.destroy_all
+Subscription.destroy_all
+ItemDesign.destroy_all
+User.destroy_all
+
 #Phone Seeds
 $design_path = Rails.root.join('app','assets','images','item_designs','phones')
 Dir.children($design_path).each do |design_filename|

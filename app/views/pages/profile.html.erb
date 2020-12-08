@@ -104,17 +104,14 @@
                   <h2 class="has-text-weight-bold">
                     <%= user_item.item_design.name %>
                   </h2>
+                  <p class="is-size-7">
+                    <%= user_item.activation_date %>
+                    <%= user_item.expiration_date %>
+                  </p>
                 </div>
                 <div class="card-content-options">
                   <div class="is-flex is-justify-content-space-between">
-                    <% if user_item.activation_date.nil? %>
-                      <div>
-                        <%= button_to "Activate", activate_path(user_item),
-                          method: :patch, data: { confirm: "Please confirm the insurance activation." },
-                          class: "button is-dark is-small",
-                          remote: true %>
-                      </div>
-                    <% elsif user_item.use_date == false %>
+                    <% if user_item.use_date == false %>
                       <div>
                         <%= button_to "Deactivate", deactivate_path(user_item),
                           method: :patch, data: { confirm: "Please confirm the insurance deactivation." },
@@ -134,29 +131,29 @@
       </div>
     <% else %>
       <div class="my-5">
-        <h1>You still don't have any insurance options</h1>
+        <h1>No insurances to activate</h1>
         <%= button_to "Add Some", item_designs_path, method: 'get' %>
       </div>
     <% end %>
   </div>
 
   <div class="container mt-4">
-    <% if @expired.any? %>
+    <% if @item_designs.any? %>
       <h2 class="subtitle">Insure again</h2>
-      <% @expired.each do |expired_item| %>
+      <% @item_designs.each do |expired_item| %>
         <div class="card px-2 pt-2 my-5 is-flex" id="expired_item-<%= expired_item.id %>">
           <div class="card-image">
             <figure class="image is-96x96">
-              <%= image_tag expired_item.item_design.design %>
+              <%= image_tag expired_item.design %>
             </figure>
           </div>
           <div class="card-content">
             <div class="card-content-title pb-2">
               <h2 class="has-text-weight-bold">
-                <%= expired_item.item_design.name %>
+                <%= expired_item.name %>
               </h2>
             </div>
-            <%= button_to "#{expired_item.item_design.name}", item_design_path(expired_item.item_design), method: :get, class: "" %>
+            <%= button_to "New Insurance", item_design_path(expired_item), method: :get, class: "" %>
           </div>
         </div>
       <% end %>

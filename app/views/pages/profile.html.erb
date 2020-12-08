@@ -53,7 +53,7 @@
             <div class="is-flex">
               <div class="card-image">
                 <figure class="image image-item is-96x96 center">
-                  <%= image_tag user_item.item_design.design %>
+                  <%= image_tag "item_designs/#{user_item.item_design.item_type.downcase}s/#{user_item.item_design.name}" %>
                 </figure>
               </div>
               <div class="card-content pt-3">
@@ -106,7 +106,7 @@
             <div class="is-flex">
               <div class="card-image">
                 <figure class="image is-96x96">
-                  <%= image_tag user_item.item_design.design %>
+                  <%= image_tag "item_designs/#{user_item.item_design.item_type.downcase}s/#{user_item.item_design.name}" %>
                 </figure>
               </div>
               <div class="card-content pt-3">
@@ -154,7 +154,7 @@
         <div class="card px-2 pt-2 my-5 is-flex" id="expired_item-<%= expired_item.id %>">
           <div class="card-image">
             <figure class="image is-96x96">
-              <%= image_tag expired_item.design %>
+              <%= image_tag "item_designs/#{expired_item.item_type.downcase}s/#{expired_item.name}" %>
             </figure>
           </div>
           <div class="card-content">

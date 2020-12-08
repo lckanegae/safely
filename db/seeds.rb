@@ -15,7 +15,6 @@ Dir.children($design_path).each do |design_filename|
     refund: Money.new(rand(100..200), "USD"),
     item_type: "Phone"
     )
-  @item_design.design.attach(io: File.open(design_path), filename: design)
   @item_design.save!
 
   puts "Creating Item #{@item_design.name}"
@@ -41,7 +40,6 @@ Dir.children($design_path).each do |design_filename|
     refund: Money.new(rand(100..200), "USD"),
     item_type: "Notebook"
     )
-  @item_design.design.attach(io: File.open(design_path), filename: design)
   @item_design.save!
 
   puts "Creating Item #{@item_design.name}"
@@ -67,7 +65,6 @@ Dir.children($design_path).each do |design_filename|
     refund: Money.new(rand(100..200), "USD"),
     item_type: "Car"
     )
-  @item_design.design.attach(io: File.open(design_path), filename: design)
   @item_design.save!
 
   puts "Creating Item #{@item_design.name}"

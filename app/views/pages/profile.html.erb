@@ -139,7 +139,7 @@
     <% else %>
       <div class="my-5">
         <h1>No insurances to activate</h1>
-        <%= button_to "Add Some", item_designs_path, method: 'get' %>
+        <%= button_to "Add Some", item_designs_path, method: 'get', class: "button is-dark is-small" %>
       </div>
     <% end %>
   </div>
@@ -160,7 +160,7 @@
                 <%= expired_item.name %>
               </h2>
             </div>
-            <%= button_to "New Insurance", item_design_path(expired_item), method: :get, class: "" %>
+            <%= button_to "New Insurance", item_design_path(expired_item), method: :get, class: "button is-dark is-small" %>
           </div>
         </div>
       <% end %>

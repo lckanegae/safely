@@ -47,7 +47,6 @@ class SecuredItemsController < ApplicationController
       @secured_item.expiration_date = DateTime.now
     end
     @secured_item.save
-
     redirect_to profile_path(anchor: "expired_item-#{@secured_item.id}"), notice: "Insurance Completed"
   end
 

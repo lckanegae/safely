@@ -9,10 +9,8 @@ class PagesController < ApplicationController
     all_user_items = SecuredItem.where(user: current_user)
 
     @expired = all_user_items.select do |user_item|
-      if user_item.expiration_date
-        unless user_item.expiration_date.to_date.future?
-          user_item
-        end
+      if user_item.total_price_cents > 0
+        user_item
       end
     end
 

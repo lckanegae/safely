@@ -42,8 +42,7 @@ class SecuredItemsController < ApplicationController
     check_secured_item
 
     if DateTime.now.to_date == @secured_item.activation_date.to_date
-      @secured_item.expiration_date = DateTime.now
-      one_day_price
+      @secured_item.expiration_date = DateTime.now + 1.day
     else
       @secured_item.expiration_date = DateTime.now
     end
@@ -53,14 +52,6 @@ class SecuredItemsController < ApplicationController
   end
 
   private
-
-  def one_day_price
-    subscription_total = SecuredSubscription.where(secured_item: @secured_item).map do |secured_subscription|
-      secured_subscription.subscription.price
-    end
-
-    @secured_item.total_price_cents = subscription_total.sum * 100
-  end
 
   def check_secured_item
     @secured_item = SecuredItem.find(params[:id])

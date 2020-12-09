@@ -19,13 +19,16 @@
             <p class="is-size-6">Address: <%= current_user.address %></p>
             <p class="is-size-6">Phone Number: <%= current_user.phone_number %></p>
             <p class="is-size-6">Birth Date: <%= current_user.birth_date %></p>
-            <p class="is-size-6">Billing: <%= calculate_total_price(@expired_items) %></p>
-            <p class="is-size-6"> <% @expired_items.each do |item| %>
-            <%= item.item_design.name + " - " + humanized_money_with_symbol(item.total_price) %>
-            <% end  %></p>
-
-
-
+            <% if @expired %>
+              <p class="is-size-6">Billing: <%= calculate_total_price(@expired) %></p>
+              <p class="is-size-6">
+                <% @expired.each do |item| %>
+                  <%= item.item_design.name + " - " + humanized_money_with_symbol(item.total_price) %>
+                <% end  %>
+              </p>
+            <% else %>
+              <p class="is-size-6">Billing: 0,00</p>
+            <% end %>
           </div>
           <div class="mt-4">
             <%= link_to "Edit", edit_user_registration_path, method: "get", class: "button is-dark level-item has-text-centered" %>
@@ -50,7 +53,7 @@
             <div class="is-flex">
               <div class="card-image">
                 <figure class="image image-item is-96x96 center">
-                  <%= image_tag user_item.item_design.design %>
+                  <%= image_tag "item_designs/#{user_item.item_design.item_type.downcase}s/#{user_item.item_design.name}.png" %>
                 </figure>
               </div>
               <div class="card-content pt-3">
@@ -103,7 +106,7 @@
             <div class="is-flex">
               <div class="card-image">
                 <figure class="image is-96x96">
-                  <%= image_tag user_item.item_design.design %>
+                  <%= image_tag "item_designs/#{user_item.item_design.item_type.downcase}s/#{user_item.item_design.name}.png" %>
                 </figure>
               </div>
               <div class="card-content pt-3">
@@ -151,7 +154,7 @@
         <div class="card px-2 pt-2 my-5 is-flex" id="expired_item-<%= expired_item.id %>">
           <div class="card-image">
             <figure class="image is-96x96">
-              <%= image_tag expired_item.design %>
+              <%= image_tag "item_designs/#{expired_item.item_type.downcase}s/#{expired_item.name}.png" %>
             </figure>
           </div>
           <div class="card-content">

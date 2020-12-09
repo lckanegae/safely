@@ -19,10 +19,10 @@
             <p class="is-size-6">Address: <%= current_user.address %></p>
             <p class="is-size-6">Phone Number: <%= current_user.phone_number %></p>
             <p class="is-size-6">Birth Date: <%= current_user.birth_date %></p>
-            <% if @expired_items %>
-              <p class="is-size-6">Billing: <%= calculate_total_price(@expired_items) %></p>
+            <% if @expired %>
+              <p class="is-size-6">Billing: <%= calculate_total_price(@expired) %></p>
               <p class="is-size-6">
-                <% @expired_items.each do |item| %>
+                <% @expired.each do |item| %>
                   <%= item.item_design.name + " - " + humanized_money_with_symbol(item.total_price) %>
                 <% end  %>
               </p>

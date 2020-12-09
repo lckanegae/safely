@@ -9,7 +9,7 @@ class SecuredItem < ApplicationRecord
   private
 
   def calculate_price
-    return unless self.expiration_date && self.expiration_date.to_date.past? && self.total_price_cents
+    return unless self.expiration_date && self.total_price_cents
 
     total_days = self.expiration_date - self.activation_date
     subscription_total = SecuredSubscription.where(secured_item: self).map do |secured_subscription|

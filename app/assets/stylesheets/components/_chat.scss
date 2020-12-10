@@ -1,7 +1,42 @@
+.show-chatroom {
+  flex-grow: 1;
+  h1 {
+    margin-bottom: 25px;
+  }
+}
+
+.message-layout {
+  max-height: 520px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 .chatbar {
   position: fixed;
   bottom: 90px;
   margin-right: auto;
   margin-left: auto;
   width: 88%;
+}
+
+.message-container {
+  padding: 10px;
+  margin: 15px 0px 0px 0px;
+  background-color: #e5e5ea;
+  border-radius: 3px;
+  width: 75%;
+  p {
+    margin: 0px;
+  }
+}
+
+.current_user_true {
+  margin-left: auto;
+  word-wrap: break-word;
+  background-color: green;
+}
+
+.current_user_false {
+  margin-right: auto;
+  background-color: red;
 }

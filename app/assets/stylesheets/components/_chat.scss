@@ -29,6 +29,48 @@
   }
 }
 
+.message-box {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  justify-content: space-between !important;
+  // border-radius: 40px !important;
+  padding: 10px 10px;
+  display: inline-block;
+}
+
+.message-text {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  float: left !important;
+  vertical-align: middle;
+}
+
+
+.message-text:focus input {
+  outline: 0px;
+  border: none;
+  background: white;
+  visibility: hidden;
+}
+
+.message-icon{
+  float: right !important;
+  align-self: center;
+  width: 10%;
+  padding-right: 45px;
+  vertical-align: middle;
+}
+
+.chat-dropdown {
+  overflow: hidden;
+}
+
+.author {
+  justify-content: space-between;
+}
+
 .current_user_true {
   margin-left: auto;
   word-wrap: break-word;
@@ -37,5 +79,5 @@
 
 .current_user_false {
   margin-right: auto;
-  background-color: #90e0ef;
+  background-color: #C8E9F9;
 }

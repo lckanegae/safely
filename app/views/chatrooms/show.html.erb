@@ -10,12 +10,14 @@
           <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
             <% @chatroom.messages.each do |message| %>
               <div class="message-container <%= current_user == message.user ? "current_user_true" : "current_user_false" %>" id="message-<%= message.id %>">
-                <i class="author is-flex">
-                  <span><%= message.user.nickname %></span>
+                <div class="author is-flex">
+                  <div>
+                    <span><%= message.user.nickname %></span>
+                  </div>
                   <div class="is-size-7">
                     <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
                   </div>
-                </i>
+                </div>
                 <p><%= message.content %></p>
               </div>
             <% end %>
@@ -30,14 +32,14 @@
   <div class="is-fluid">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3 chatbar">
-        <div class="search-box is-flex is-justify-content-center">
-          <div class="search-text">
+        <div class="message-box is-flex is-justify-content-center">
+          <div class="message-text chat-dropdown">
             <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-              <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
+              <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}", input_html: {autocomplete: "off"} %>
           </div>
-          <div class="search-icon is-flex">
+          <div class="message-icon is-flex">
             <%= button_tag(type: "submit", class: "btn-default") do %>
-              <i class="fas fa-paper-plane fa-lg search-icon"></i>
+              <i class="fas fa-paper-plane fa-lg message-icon"></i>
             <% end %>
           </div>
           <% end %>

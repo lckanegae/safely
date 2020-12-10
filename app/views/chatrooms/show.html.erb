@@ -9,11 +9,11 @@
         <div class="message-layout">
           <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
             <% @chatroom.messages.each do |message| %>
-              <div class="message-container" id="message-<%= message.id %>">
-                <i class="author is-flex is-justify-content-space-between">
+              <div class="message-container <%= current_user == message.user ? "current_user_true" : "current_user_false" %>" id="message-<%= message.id %>">
+                <i class="author is-flex">
                   <span><%= message.user.nickname %></span>
-                  <div class="is-size-7 is-justify-content-space-between">
-                    <small class="has-text-left"><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                  <div class="is-size-7">
+                    <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
                   </div>
                 </i>
                 <p><%= message.content %></p>

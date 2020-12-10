@@ -22,7 +22,6 @@
 .message-container {
   padding: 10px;
   margin: 15px 0px 0px 0px;
-  background-color: #e5e5ea;
   border-radius: 3px;
   width: 75%;
   p {
@@ -33,10 +32,10 @@
 .current_user_true {
   margin-left: auto;
   word-wrap: break-word;
-  background-color: green;
+  background-color: #e5e5ea;
 }
 
 .current_user_false {
   margin-right: auto;
-  background-color: red;
+  background-color: #90e0ef;
 }

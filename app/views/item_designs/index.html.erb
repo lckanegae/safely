@@ -8,7 +8,7 @@
           <%#= select_tag "search", options_from_collection_for_select(ItemDesign.all, :name, :name), class: 'select2'%>
           <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for an item" %>
         </div>
-        <div class="is-flex search-icon">
+        <div class="search-icon is-flex">
           <%= button_tag(type: "submit", class: "btn-default") do %>
             <i class="fas fa-search fa-lg search-icon"></i>
           <% end %>

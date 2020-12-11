@@ -26,73 +26,10 @@ nav {
   display: block;
 }
 
-.nav-bar-container {
-  -webkit-box-align: center !important;
-  align-items: center !important;
-  background-color: rgb(255, 255, 255) !important;
-  border-top: 1px solid rgb(221, 221, 221) !important;
-  bottom: 0px !important;
-  height: 65px !important;
-  left: 0px !important;
-  overflow: hidden !important;
-  position: fixed !important;
-  right: 0px !important;
-  z-index: 100 !important;
-  transition: -ms-transform 0.2s cubic-bezier(0, 0, 0.1, 1) 0s, -webkit-transform 0.2s cubic-bezier(0, 0, 0.1, 1) 0s, transform 0.2s cubic-bezier(0, 0, 0.1, 1) 0s, visibility 0s ease 0s !important;
-}
 
-.nav-bar-content {
-  -webkit-box-pack: center !important;
-  display: flex !important;
-  height: 100% !important;
-  justify-content: center !important;
-  margin: 0px auto !important;
-  max-width: 560px !important;
-}
-
-.nav-icon-container {
-  -webkit-box-pack: center !important;
-  -webkit-box-direction: normal !important;
-  -webkit-box-orient: vertical !important;
-  -webkit-box-align: center !important;
-  outline: none !important;
-  align-items: center !important;
-  border-radius: 8px !important;
-  color: rgb(113, 113, 113) !important;
-  cursor: pointer !important;
-  display: flex !important;
-  flex: 1 1 0px !important;
-  flex-direction: column !important;
-  height: 64px !important;
-  hyphens: auto !important;
-  justify-content: center !important;
-  max-width: 20% !important;
-  min-width: 0px !important;
-  padding: 0px 2px !important;
-  text-align: center !important;
-  text-decoration: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-}
-
-.nav-icon-content {
-    height: 30px !important;
-    margin-bottom: 2px !important;
-    padding: 3px !important;
-    width: 30px !important;
-    color: rgb(176, 176, 176) !important;
-}
-
-.nav-icon-text {
-    font-size: 10px !important;
-    line-height: 12px !important;
-    max-height: 24px !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2 !important;
-    -webkit-box-orient: vertical !important;
-    font-weight: 600 !important;
-    overflow-wrap: break-word !important;
+.navbar-item {
+  padding-left: 0px;
+  padding-bottom: 0px;
 }
 
 a, a:hover, a:focus {

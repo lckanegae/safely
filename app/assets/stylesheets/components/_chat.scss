@@ -1,0 +1,83 @@
+.show-chatroom {
+  flex-grow: 1;
+  h1 {
+    margin-bottom: 25px;
+  }
+}
+
+.message-layout {
+  max-height: 520px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.chatbar {
+  position: fixed;
+  bottom: 90px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 88%;
+}
+
+.message-container {
+  padding: 10px;
+  margin: 15px 0px 0px 0px;
+  border-radius: 3px;
+  width: 75%;
+  p {
+    margin: 0px;
+  }
+}
+
+.message-box {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  justify-content: space-between !important;
+  // border-radius: 40px !important;
+  padding: 10px 10px;
+  display: inline-block;
+}
+
+.message-text {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  float: left !important;
+  vertical-align: middle;
+}
+
+
+.message-text:focus input {
+  outline: 0px;
+  border: none;
+  background: white;
+  visibility: hidden;
+}
+
+.message-icon{
+  float: right !important;
+  align-self: center;
+  width: 10%;
+  padding-right: 45px;
+  vertical-align: middle;
+}
+
+.chat-dropdown {
+  overflow: hidden;
+}
+
+.author {
+  justify-content: space-between;
+}
+
+.current_user_true {
+  margin-left: auto;
+  word-wrap: break-word;
+  background-color: #e5e5ea;
+}
+
+.current_user_false {
+  margin-right: auto;
+  background-color: #C8E9F9;
+}

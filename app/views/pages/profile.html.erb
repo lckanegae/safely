@@ -164,7 +164,7 @@
 <section class="hero is-light">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title is-uppercase has-text-weight-bold is-size-5">December's total expenses</h1>
+      <h1 class= "title is-uppercase has-text-weight-bold is-size-5">December's total expenses</h1>
     </div>
 
     <div class="container mt-4">
@@ -172,11 +172,13 @@
         <div class="level">
           <div class="container">
             <% if @expired %>
-              <p class="is-size-6">Billing: <%= calculate_total_price(@expired) %></p>
               <p class="is-size-6">
                 <% @expired.each do |item| %>
                   <%= item.item_design.name + " - " + humanized_money_with_symbol(item.total_price) %>
+                  <br>
                 <% end  %>
+              <p class="is-size-6">_________________________</p>
+              <p class="is-size-6"><b>Total:</b> <%= calculate_total_price(@expired) %></p>
               </div>
             <% else %>
               <p class="is-size-6">Billing: $0,00</p>

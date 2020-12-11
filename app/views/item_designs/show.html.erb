@@ -17,22 +17,22 @@
            :label_method => lambda { |subscription|
               "<div class=\"subscription-infos\">
                 <h3>#{subscription.subscription_type}</h3>
-                <h3>#{subscription.price.format}</h3><br>
+                <h3 price-data=\"#{subscription.price}\">#{subscription.price.format}</h3><br>
               </div>".html_safe
             },
            label: false,
            include_hidden: false,
            class: "switch is-info is-rtl" %>
         </div>
+        <div id="total">
+        </div>
       </div>
 
       <%= f.hidden_field :item_design_id, value: @item_design.id %>
       <div class="card px-2 py-2 mb-5">
 
-        <div class="b-checkbox is-warning">
-          <%= f.input :use_date, as: :boolean, input_html: { type: 'checkbox' }, class: "styled",
-              :label => "   (Optional) Select start/end date for your insurance." %>
-        </div>
+        <%= f.input :use_date, as: :boolean,
+            :label => "   (Optional) Select start/end date for your insurance.", class: "switch is-info is-rtl" %>
 
         <div class="px-2 py-2">
           <%= f.input :activation_date, as: :date, :label => "Start Date",

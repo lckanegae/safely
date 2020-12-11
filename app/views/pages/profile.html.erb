@@ -86,7 +86,7 @@
     <% else %>
       <div class="my-5">
         <h1>You still don't have any insurance options</h1>
-        <%= button_to "Add Some", item_designs_path, method: 'get' %>
+        <%= button_to "Insure an item", item_designs_path, method: 'get' %>
       </div>
     <% end %>
   </div>
@@ -114,15 +114,15 @@
                 </div>
                 <div class="card-content-options">
                   <div class="is-flex is-justify-content-space-between">
-                    <% if user_item.use_date == false %>
-                      <div>
-                        <%= button_to "Deactivate", deactivate_path(user_item),
-                          method: :patch, data: { confirm: "Please confirm the insurance deactivation." },
-                          class: "button is-dark is-small",
-                          remote: true %>
-                      </div>
-                    <% end %>
-                    <div class="ml-3">
+                  <% if user_item.use_date == false %>
+                    <div>
+                      <%= button_to "Deactivate", deactivate_path(user_item),
+                        method: :patch, data: { confirm: "Please confirm the insurance deactivation." },
+                        class: "button is-dark is-small",
+                        remote: true %>
+                    </div>
+                  <% end %>
+                      <div class="ml-3">
                       <%=  link_to "Edit", edit_secured_item_path(user_item), method: "get", class: "button is-dark is-small" %>
                     </div>
                   </div>
@@ -166,7 +166,7 @@
 <section class="hero is-light">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title is-uppercase has-text-weight-bold is-size-5">December's total expenses</h1>
+      <h1 class= "title is-uppercase has-text-weight-bold is-size-5">December's total expenses</h1>
     </div>
 
     <div class="container mt-4">
@@ -174,20 +174,20 @@
         <div class="level">
           <div class="container">
             <% if @expired %>
-              <p class="is-size-6">Billing: <%= calculate_total_price(@expired) %></p>
-              <div class="is-size-6">
+              <p class="is-size-6">
                 <% @expired.each do |item| %>
-                  <br>
                   <%= item.item_design.name + " - " + humanized_money_with_symbol(item.total_price) %>
+                  <br>
                 <% end  %>
+              <p class="is-size-6"><b>Total:</b> <%= calculate_total_price(@expired) %></p>
               </div>
             <% else %>
-              <p class="is-size-6">Billing: 0,00</p>
+              <p class="is-size-6">Billing: $0,00</p>
             <% end %>
           </div>
 
           <div class="container">
-            <h1 class="title is-uppercase has-text-weight-bold is-size-5 mt-6">Billing Infos</h1>
+            <h1 class="title is-uppercase has-text-weight-bold is-size-5 mt-6">Billing Information</h1>
             <p>CARD 1: MASTERCARD</p>
             <p>Credit Card: **** **** **** 1256</p>
             <p>Expiration Date: 10/29</p>

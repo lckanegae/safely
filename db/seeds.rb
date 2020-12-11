@@ -79,15 +79,15 @@ Dir.children($design_path).each do |design_filename|
   end
 end
 
-["Leticia", "Gilbas", "Tatchi", "Leon", "Carol", "Thierry", "Ana", "Roberto", "JoA"].each do |username|
+["Leon"].each do |username|
   @user = User.create!(
-    email: "#{username.downcase}@lewagon.com",
+    email: "#{username.downcase}@safely.com",
     password: "123456",
     first_name: username,
-    last_name: "Lewagon",
-    address: "Av. Paulista, 123",
-    phone_number: "(+5511)123123123",
-    birth_date: Date.new(2001,11,11),
+    last_name: "Cohen",
+    address: "Rua Jericó, 193",
+    phone_number: "+55 (11) 99998-9876",
+    birth_date: Date.new(2001,07,11),
     cpf: "423.423.4#{rand(10-99)}-#{rand(10-99)}",
     nickname: username
     )

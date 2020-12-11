@@ -23,7 +23,7 @@ Dir.children($design_path).each do |design_filename|
     Subscription.create!(
       item_design: ItemDesign.find_by(name: design),
       subscription_type: type,
-      price: Money.new(rand(100..200), "USD")
+      price: Money.new(rand(30..80), "USD")
       )
     puts "Creating #{type} Insurance for #{@item_design.name}"
   end

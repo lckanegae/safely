@@ -26,7 +26,6 @@ require("bulma-extensions")
 
 // External imports
 import "bootstrap";
-
 // Internal imports, e.g:
 import { initSelect2 } from './init_select2';
 import { initChatroomCable } from '../channels/chatroom_channel';

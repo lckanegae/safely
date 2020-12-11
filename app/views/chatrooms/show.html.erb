@@ -25,7 +25,6 @@
         </div>
       </div>
     </div>
-  </div>
 
   <!-- <form action="/chatrooms/1/messages" method="post"></form> -->
 
@@ -35,7 +34,7 @@
         <div class="message-box is-flex is-justify-content-center">
           <div class="message-text chat-dropdown">
             <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-              <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}", input_html: {autocomplete: "off"} %>
+              <%= f.input :content, label: false, placeholder: "Talk to our support team.", input_html: {autocomplete: "off"} %>
           </div>
           <div class="message-icon is-flex">
             <%= button_tag(type: "submit", class: "btn-default") do %>

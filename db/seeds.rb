@@ -2,6 +2,7 @@ SecuredSubscription.destroy_all
 SecuredItem.destroy_all
 Subscription.destroy_all
 ItemDesign.destroy_all
+Message.destroy_all
 User.destroy_all
 
 #Phone Seeds

@@ -114,12 +114,14 @@
                 </div>
                 <div class="card-content-options">
                   <div class="is-flex is-justify-content-space-between">
-                      <div>
-                        <%= button_to "Deactivate", deactivate_path(user_item),
-                          method: :patch, data: { confirm: "Please confirm the insurance deactivation." },
-                          class: "button is-dark is-small",
-                          remote: true %>
-                      </div>
+                  <% if user_item.use_date == false %>
+                    <div>
+                      <%= button_to "Deactivate", deactivate_path(user_item),
+                        method: :patch, data: { confirm: "Please confirm the insurance deactivation." },
+                        class: "button is-dark is-small",
+                        remote: true %>
+                    </div>
+                  <% end %>
                       <div class="ml-3">
                       <%=  link_to "Edit", edit_secured_item_path(user_item), method: "get", class: "button is-dark is-small" %>
                     </div>
@@ -177,7 +179,6 @@
                   <%= item.item_design.name + " - " + humanized_money_with_symbol(item.total_price) %>
                   <br>
                 <% end  %>
-              <p class="is-size-6">_________________________</p>
               <p class="is-size-6"><b>Total:</b> <%= calculate_total_price(@expired) %></p>
               </div>
             <% else %>

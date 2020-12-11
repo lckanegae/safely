@@ -177,7 +177,7 @@
                 <% @expired.each do |item| %>
                   <%= item.item_design.name + " - " + humanized_money_with_symbol(item.total_price) %>
                 <% end  %>
-              </p>
+              </div>
             <% else %>
               <p class="is-size-6">Billing: $0,00</p>
             <% end %>

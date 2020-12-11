@@ -160,7 +160,7 @@
                 <%= expired_item.name %>
               </h2>
             </div>
-            <%= button_to "New Insurance", item_design_path(expired_item), method: :get, class: "" %>
+            <%= button_to "New Insurance", item_design_path(expired_item), method: :get, class: "button is-dark is-small" %>
           </div>
         </div>
       <% end %>
@@ -171,8 +171,8 @@
     <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "button is-dark level-item has-text-centered" %>
   </div>
 
-
 </section>
+
 
 
 

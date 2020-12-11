@@ -2,6 +2,7 @@ SecuredSubscription.destroy_all
 SecuredItem.destroy_all
 Subscription.destroy_all
 ItemDesign.destroy_all
+Message.destroy_all
 User.destroy_all
 
 #Phone Seeds
@@ -93,28 +94,4 @@ end
     )
 
   puts "Creating user #{@user.first_name} #{@user.last_name}"
-
-  4.times do
-    @item_design = ItemDesign.all.sample()
-
-    secured_item = SecuredItem.new(
-      user: @user,
-      item_design: @item_design,
-      use_date: rand(0..1)
-      )
-    if secured_item.use_date == 1
-      secured_item.activation_date = DateTime.now
-      secured_item.deactivation_date = DateTime.now + rand(2..5).days
-    end
-    secured_item.save!
-
-    Subscription.where(item_design: @item_design).each do |subscription|
-    SecuredSubscription.create!(
-      secured_item: secured_item,
-      subscription: subscription
-      )
-    end
-
-    puts "Creating secured item #{@item_design.name} with subscriptions for #{@user.first_name} #{@user.last_name}"
-  end
 end

@@ -11,9 +11,6 @@
             <% @chatroom.messages.each do |message| %>
               <div class="message-container <%= current_user == message.user ? "current_user_true" : "current_user_false" %>" id="message-<%= message.id %>">
                 <div class="author is-flex">
-                  <div>
-                    <span><%= message.user.nickname %></span>
-                  </div>
                   <div class="is-size-7">
                     <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
                   </div>
